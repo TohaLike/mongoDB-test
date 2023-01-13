@@ -18,13 +18,16 @@ app.set('views', 'views');
 
 app.use(todoRoutes);
 
-// mongodb+srv://<username>:<password>@cluster0.q9ecejt.mongodb.net/test
+
+
 async function start() {
     try {
-        await mongoose.connect('mongodb+srv://AntonM:554431@cluster0.q9ecejt.mongodb.net/?retryWrites=true&w=majority', {
+        await mongoose.connect('mongodb+srv://AntonM:554431@cluster0.q9ecejt.mongodb.net/?retryWrites=true&w=majority', 
+            {
             useNewUrlParser: true,
-            useFindAndModify: false
-        });
+            useUnifiedTopology: true,
+            // useFindAndModify: true
+            });
 
         app.listen(PORT, () => {
             console.log('Server has been started...');
