@@ -1,9 +1,21 @@
-  <nav class="blue darken-4">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Logo</a>
+<nav class="blue darken-4">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Todos</a></li>
+
+        {{#if isIndex}}
+        <li class="active"><a href="/">Nav First</a></li>
+        {{else}}
+        <li><a href="/">Nav First</a></li>
+        {{/if}}
+
+        {{#if isCreate}}
+        <li class="active"><a href="/Create">Nav Second</a></li>
+        {{else}}
+        <li><a href="/Create">Nav Second</a></li>
+        {{/if}}
+      
       </ul>
-    </div>
-  </nav>
+  </div>
+</nav>
         
