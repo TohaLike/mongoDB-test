@@ -16,8 +16,9 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
-app.use(todoRoutes);
+app.use(express.urlencoded({extended: true}))
 
+app.use(todoRoutes);
 
 
 async function start() {
