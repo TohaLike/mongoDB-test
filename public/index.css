@@ -1,0 +1,29 @@
+.brand-logo {
+    margin-left: 150px;
+}
+
+.hide-on-med-and-down {
+    margin-right: 150px;
+}
+
+.hide-on-med-and-down li {
+    margin-right: 14px;
+}
+
+.todo span.completed {
+    text-decoration: line-through;
+}
+
+.todo label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #f3f3f3;
+    padding: 1em;
+}
+
+.todo i {
+    z-index: 2;
+}
