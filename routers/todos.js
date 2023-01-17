@@ -36,7 +36,6 @@ router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
 
     todo.complited = !!req.body.complited;
-    // await tododelete.remove()
     await todo.save()
 
     res.redirect('/')
