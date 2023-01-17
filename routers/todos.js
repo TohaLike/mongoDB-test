@@ -35,12 +35,13 @@ router.post('/create', async (req, res) => {
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
 
-    todo.completed = true
-
-    await todo.save();
+    todo.complited = !!req.body.complited;
+    // await tododelete.remove()
+    await todo.save()
 
     res.redirect('/')
-})
+});
+
 
 
 module.exports = router

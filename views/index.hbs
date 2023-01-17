@@ -6,19 +6,18 @@
             <li class="todo">
                 <form action="/complete" method="POST">
                     <label>
-
-                        {{#if completed}}
-                            <input type="checkbox" checked>
-                            <span class="completed">{{title}}</span>
+                        {{#if complited}}
+                        <input type="checkbox" checked name="complited">
+                        <span class="completed">{{title}}</span>
                         {{else}}
-                            <input type="checkbox">
-                            <span>{{title}}</span>
+                        <input type="checkbox" name="complited">
+                        <span>{{title}}</span>
                         {{/if}}
                         
                         <input type="hidden" value="{{_id}}" name="id">
                         
                         <button class="btn btn-small" type="submit">Save</button>
-                    </label>
+                    </label>                        
                 </form>
             </li>
         {{/each}}
