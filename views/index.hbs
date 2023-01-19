@@ -8,10 +8,16 @@
                     <label>
                         {{#if complited}}
                         <input type="checkbox" checked name="complited">
-                        <span class="completed">{{title}}</span>
+                        <span class="main__title completed">{{firstName}}</span>
+                        <span class="main__title completed">{{lastName}}</span>
+                        <span class="main__title completed">{{email}}</span>
+                        <span class="main__title completed">{{mobilePhone}}</span>
                         {{else}}
                         <input type="checkbox" name="complited">
-                        <span>{{title}}</span>
+                        <span class="main__title">{{firstName}}</span>
+                        <span class="main__title">{{lastName}}</span>
+                        <span class="main__title">{{email}}</span>
+                        <span class="main__title">{{mobilePhone}}</span>                        
                         {{/if}}
                         
                         <input type="hidden" value="{{_id}}" name="id">

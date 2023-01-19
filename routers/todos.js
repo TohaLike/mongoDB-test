@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const { remove, findById} = require('../models/Todo');
+const {remove, findById} = require('../models/Todo');
 const Todo = require('../models/Todo');
 const router = Router();
 
@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
     });
 });
 
-
 router.get('/create', (req, res) => {
     res.render('create', {
         title: 'Create Todo',
@@ -23,20 +22,27 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
+
     const todo = new Todo({
-        title: req.body.title
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        mobilePhone: req.body.mobilePhone,
     });
+
+
+    
+
     await todo.save();
     res.redirect('/');
 });
 
 
-
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
 
-    todo.complited = !!req.body.complited;
-    await todo.save()
+    // todo.complited = !!req.body.complited;
+    await todo.remove()
 
     res.redirect('/')
 });

@@ -6,7 +6,9 @@
     margin-right: 150px;
 }
 
-
+.main__title {
+    font-size: 20px;
+}
 
 .hide-on-med-and-down li {
     margin-right: 14px;
