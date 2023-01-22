@@ -7,16 +7,23 @@
 }
 
 .main__title {
-    font-size: 20px;
+    font-size: 1rem;
+    width: 350px;
+}
+
+.completed {
+    font-size: 1rem;
+    width: 350px;
 }
 
 .hide-on-med-and-down li {
     margin-right: 14px;
 }
 
-.todo span.completed {
+
+/* .todo span.completed {
     text-decoration: line-through;
-}
+} */
 
 .todo label {
     width: 100%;
