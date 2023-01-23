@@ -6,12 +6,18 @@
     margin-right: 150px;
 }
 
+[type="checkbox"]+span:not(.lever) {
+    font-size: 20px;
+    text-decoration: underline;
+}
+
 .main__title {
     font-size: 20px;
+    width: 300px;
 }
 
 .hide-on-med-and-down li {
-    margin-right: 14px;
+    margin-right: 5px;
 }
 
 .todo span.completed {
