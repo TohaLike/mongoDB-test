@@ -30,9 +30,6 @@ router.post('/create', async (req, res) => {
         mobilePhone: req.body.mobilePhone,
     });
 
-
-    
-
     await todo.save();
     res.redirect('/');
 });
@@ -41,8 +38,8 @@ router.post('/create', async (req, res) => {
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
 
-    // todo.complited = !!req.body.complited;
-    await todo.remove()
+    todo.complited = !!req.body.complited;
+    await todo.save()
 
     res.redirect('/')
 });

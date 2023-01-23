@@ -1,4 +1,4 @@
-<h2>Todos page</h2>
+<h2>Сотрудники</h2>
 
 {{#if todos.length}}
     <ul>
@@ -8,21 +8,21 @@
                     <label>
                         {{#if complited}}
                         <input type="checkbox" checked name="complited">
-                        <span class="main__title completed">{{firstName}}</span>
-                        <span class="main__title completed">{{lastName}}</span>
-                        <span class="main__title completed">{{email}}</span>
-                        <span class="main__title completed">{{mobilePhone}}</span>
+                        <span class="completed">{{firstName}}</span>
+                        <span class="completed">{{lastName}}</span>
+                        <span class="completed email">{{email}}</span>
+                        <span class="completed">{{mobilePhone}}</span>
                         {{else}}
                         <input type="checkbox" name="complited">
                         <span class="main__title">{{firstName}}</span>
                         <span class="main__title">{{lastName}}</span>
-                        <span class="main__title">{{email}}</span>
+                        <span class="main__title email">{{email}}</span>
                         <span class="main__title">{{mobilePhone}}</span>                        
                         {{/if}}
                         
                         <input type="hidden" value="{{_id}}" name="id">
                         
-                        <button class="btn btn-small" type="submit">Save</button>
+                        <button class="btn btn-small" type="submit">Сохранить</button>
                     </label>                        
                 </form>
             </li>

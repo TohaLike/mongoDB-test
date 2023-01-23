@@ -2,6 +2,11 @@ const {Schema, model} = require('mongoose');
 const { title } = require('process');
 
 const schema = new Schema({
+    complited: {
+        type: Boolean,
+        default: false
+    },
+    
     firstName: {
         type: String,
         required: true,
