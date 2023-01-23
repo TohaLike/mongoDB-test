@@ -22,14 +22,22 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-
     const todo = new Todo({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        mobilePhone: req.body.mobilePhone,
+        mobilePhone: req.body.mobilePhone
     });
+    
 
+    // try {
+    //     
+    //     res.redirect('/');
+    // } catch (err) {
+    //     console.log(err)
+    //     res.redirect('/create');
+    // }
+  
     await todo.save();
     res.redirect('/');
 });
