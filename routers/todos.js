@@ -1,3 +1,4 @@
+const e = require('express');
 const {Router} = require('express');
 const {remove, findById} = require('../models/Todo');
 const Todo = require('../models/Todo');
@@ -30,16 +31,16 @@ router.post('/create', async (req, res) => {
     });
     
 
-    // try {
-    //     
-    //     res.redirect('/');
-    // } catch (err) {
-    //     console.log(err)
-    //     res.redirect('/create');
-    // }
+    try { 
+        await todo.save()
+        res.redirect('/');
+    } catch (err) {
+        console.log(err)
+        res.redirect('/create');
+    }
   
-    await todo.save();
-    res.redirect('/');
+   
+    // res.redirect('/');
 });
 
 
@@ -47,10 +48,12 @@ router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
 
     todo.complited = !!req.body.complited;
-    await todo.save()
 
+    await todo.save()
+    
     res.redirect('/')
 });
+
 
 
 
