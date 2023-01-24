@@ -30,7 +30,6 @@ router.post('/create', async (req, res) => {
         mobilePhone: req.body.mobilePhone
     });
     
-
     try { 
         await todo.save()
         res.redirect('/');
@@ -38,20 +37,22 @@ router.post('/create', async (req, res) => {
         console.log(err)
         res.redirect('/create');
     }
-  
    
-    // res.redirect('/');
 });
-
 
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-
-    todo.complited = !!req.body.complited;
-
-    await todo.save()
+    let buttons = req.body.simplebtn;
     
-    res.redirect('/')
+    if (buttons === 'delete') {
+        await todo.remove()
+        res.redirect('/')
+    } else if (buttons === 'save') {
+        todo.complited = !!req.body.complited;
+        await todo.save()
+        res.redirect('/')
+    }
+
 });
 
 
