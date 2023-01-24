@@ -1,4 +1,3 @@
-const e = require('express');
 const {Router} = require('express');
 const {remove, findById} = require('../models/Todo');
 const Todo = require('../models/Todo');
