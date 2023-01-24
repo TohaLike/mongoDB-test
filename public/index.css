@@ -20,6 +20,12 @@ body {
     /* border-radius: 15px; */
 }
 
+
+.wrtie-inputs::placeholder {
+    color: #a5a5a5;
+}
+
+
 /* For main page */
 .btn-save {
     margin-right: 5px;
