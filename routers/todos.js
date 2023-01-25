@@ -41,19 +41,30 @@ router.post('/create', async (req, res) => {
 
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-    let buttons = req.body.simplebtn;
+
+    let buttons = req.body.simplebtn;    
     
     if (buttons === 'delete') {
         await todo.remove()
         res.redirect('/')
-    } else if (buttons === 'save') {
+    } 
+    
+    if (buttons === 'save') {
         todo.complited = !!req.body.complited;
         await todo.save()
         res.redirect('/')
+    }  
+
+    if (buttons === 'deleteuse' && todo.complited) {
+        // todo.complited = !!req.body.complited;
+        // await Todo.remove()
+        res.redirect('/')
+        console.log('fd')
+    } else {
+        console.log('err')
     }
 
 });
-
 
 
 
