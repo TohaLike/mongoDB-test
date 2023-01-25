@@ -22,27 +22,38 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-
     const todo = new Todo({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        mobilePhone: req.body.mobilePhone,
+        mobilePhone: req.body.mobilePhone
     });
-
-    await todo.save();
-    res.redirect('/');
+    
+    try { 
+        await todo.save()
+        res.redirect('/');
+    } catch (err) {
+        console.log(err)
+        res.redirect('/create');
+    }
+   
 });
-
 
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
+    let buttons = req.body.simplebtn;
+    
+    if (buttons === 'delete') {
+        await todo.remove()
+        res.redirect('/')
+    } else if (buttons === 'save') {
+        todo.complited = !!req.body.complited;
+        await todo.save()
+        res.redirect('/')
+    }
 
-    todo.complited = !!req.body.complited;
-    await todo.save()
-
-    res.redirect('/')
 });
+
 
 
 

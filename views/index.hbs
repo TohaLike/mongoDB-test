@@ -1,10 +1,11 @@
 <h2>Сотрудники</h2>
 
 {{#if todos.length}}
+
     <ul>
         {{#each todos}}
             <li class="todo">
-                <form action="/complete" method="POST">
+                <form action="/complete" method="POST">                        
                     <label>
                         {{#if complited}}
                         <input type="checkbox" checked name="complited">
@@ -22,14 +23,16 @@
                         
                         <input type="hidden" value="{{_id}}" name="id">
                         
-                        <button class="btn btn-small" type="submit">Сохранить</button>
+                        <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
+                        <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="delete">Удалить</button>
                     </label>                        
                 </form>
+              
             </li>
         {{/each}}
     </ul>
-
-    {{else}}
+    
+{{else}}
     
     <p>No todos!</p>
 
