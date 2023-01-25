@@ -1,6 +1,13 @@
 <h2>Сотрудники</h2>
 
+{{!-- <form action="/complete" method="POST">                        
+    <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="deleteuse">Удалить</button>
+</form> --}}
+
 {{#if todos.length}}
+<form action="/complete" method="POST">                        
+    <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="deleteuse">Удалить</button>
+</form>
 
     <ul>
         {{#each todos}}
@@ -27,7 +34,6 @@
                         <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="delete">Удалить</button>
                     </label>                        
                 </form>
-              
             </li>
         {{/each}}
     </ul>
