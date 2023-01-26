@@ -46,15 +46,40 @@ router.post('/complete', async (req, res) => {
     if (buttons === 'delete') {
         await todo.remove()
         res.redirect('/')
-    } else if (buttons === 'save') {
+    } 
+    
+    if (buttons === 'save') {
         todo.complited = !!req.body.complited;
         await todo.save()
         res.redirect('/')
     }
 
+    // if (buttons === 'deleteuser') {
+    //     // todo.complited = true;
+    //     await todo.remove()
+    //     res.redirect('/')
+    // } else {
+    //     console.log('err')
+    //     res.redirect('/')
+    // }
+
 });
 
 
+
+router.post('/complete', async (req, res) => {
+    const todo = await Todo.findById(req.body.id)
+    let buttons = req.body.deleteuserbtn;
+    
+    if (buttons === 'deleteuser') {
+        todo.complited = true;
+        await todo.remove()
+        res.redirect('/')
+    } else {
+        console.log('err')
+        res.redirect('/')
+    }
+})
 
 
 module.exports = router
