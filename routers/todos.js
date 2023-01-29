@@ -21,6 +21,8 @@ router.get('/create', (req, res) => {
     });
 });
 
+let saveEmployee = [];
+
 router.post('/create', async (req, res) => {
     const todo = new Todo({
         firstName: req.body.firstName,
@@ -36,50 +38,54 @@ router.post('/create', async (req, res) => {
         console.log(err)
         res.redirect('/create');
     }
-   
 });
 
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
+    
     let buttons = req.body.simplebtn;
     
+
+
     if (buttons === 'delete') {
-        await todo.remove()
+        
+        // console.log(trueUser)
+        await Todo.deleteMany({complited: true});   
         res.redirect('/')
-    } 
-    
+    }
+
     if (buttons === 'save') {
-        todo.complited = !!req.body.complited;
+        todo.complited = false;
+        // console.log(todos)
         await todo.save()
         res.redirect('/')
     }
-
-    // if (buttons === 'deleteuser') {
-    //     // todo.complited = true;
-    //     await todo.remove()
-    //     res.redirect('/')
-    // } else {
-    //     console.log('err')
-    //     res.redirect('/')
-    // }
-
 });
 
 
-
-router.post('/complete', async (req, res) => {
+router.post('/uncomplete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-    let buttons = req.body.deleteuserbtn;
-    
-    if (buttons === 'deleteuser') {
+    let buttons = req.body.simplebtn;
+
+    if (buttons === 'save') {
         todo.complited = true;
-        await todo.remove()
-        res.redirect('/')
-    } else {
-        console.log('err')
+        // console.log(todo)
+        await todo.save()
         res.redirect('/')
     }
-})
+});
+
+
+// router.post('/deleteelements', async (req, res) => {
+//     const todo = await Todo.findById(req.body.id)
+//     let buttons = req.body.simplebtn;
+    
+//     if (buttons === 'delete') {
+//         console.log('!')
+//         res.redirect('/')
+//     }
+// });
+
 
 
 module.exports = router
