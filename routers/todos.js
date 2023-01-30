@@ -49,7 +49,7 @@ router.post('/complete', async (req, res) => {
 
     if (buttons === 'delete') {
         
-        // console.log(trueUser)
+        // console.log('trueUser')
         await Todo.deleteMany({complited: true});   
         res.redirect('/')
     }

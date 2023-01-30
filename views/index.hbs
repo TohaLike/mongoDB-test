@@ -8,7 +8,7 @@
             <li class="todo">
                 <label>
                     {{#if complited}}
-                        <form action="/complete" method="POST">                        
+                        <form action="/complete" id="complete" method="POST">                        
                             <input type="checkbox" checked name="complited">
                             <span class="completed">{{firstName}}</span>
                             <span class="completed">{{lastName}}</span>
