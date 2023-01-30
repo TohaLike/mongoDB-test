@@ -42,21 +42,15 @@ router.post('/create', async (req, res) => {
 
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
+    const buttons = req.body.simplebtn;
     
-    let buttons = req.body.simplebtn;
-    
-
-
     if (buttons === 'delete') {
-        
-        // console.log('trueUser')
         await Todo.deleteMany({complited: true});   
         res.redirect('/')
     }
 
     if (buttons === 'save') {
         todo.complited = false;
-        // console.log(todos)
         await todo.save()
         res.redirect('/')
     }
@@ -69,23 +63,10 @@ router.post('/uncomplete', async (req, res) => {
 
     if (buttons === 'save') {
         todo.complited = true;
-        // console.log(todo)
         await todo.save()
         res.redirect('/')
     }
 });
-
-
-// router.post('/deleteelements', async (req, res) => {
-//     const todo = await Todo.findById(req.body.id)
-//     let buttons = req.body.simplebtn;
-    
-//     if (buttons === 'delete') {
-//         console.log('!')
-//         res.redirect('/')
-//     }
-// });
-
 
 
 module.exports = router
