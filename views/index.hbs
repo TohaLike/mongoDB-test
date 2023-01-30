@@ -1,37 +1,43 @@
-<h2>Сотрудники</h2>
-
+<h2>Сотрудники: <span>{{todos.length}}</span></h2> 
 
 {{#if todos.length}}
-
+    <button class="btn btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
+    
     <ul>
-        <button class="btn btn-delete btn-small" form="complete" type="submit" name="deleteuserbtn" value="deleteuser">Delete</button>
-
         {{#each todos}}     
             <li class="todo">
-                <form action="/complete" id="complete" method="POST">                        
-                    <label>
-                        {{#if complited}}
-                        <input type="checkbox" checked name="complited">
-                        <span class="completed">{{firstName}}</span>
-                        <span class="completed">{{lastName}}</span>
-                        <span class="completed email">{{email}}</span>
-                        <span class="completed">{{mobilePhone}}</span>
-                        {{else}}
-                        <input type="checkbox" name="complited">
-                        <span class="main__title">{{firstName}}</span>
-                        <span class="main__title">{{lastName}}</span>
-                        <span class="main__title email">{{email}}</span>
-                        <span class="main__title">{{mobilePhone}}</span>                        
-                        {{/if}}
-                        
-                        <input type="hidden" value="{{_id}}" name="id">
-                        
-                        <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
-                        <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="delete">Удалить</button>
-                    </label>                        
-                </form>
+                <label>
+                    {{#if complited}}
+                        <form action="/complete" method="POST">                        
+                            <input type="checkbox" checked name="complited">
+                            <span class="completed">{{firstName}}</span>
+                            <span class="completed">{{lastName}}</span>
+                            <span class="completed email">{{email}}</span>
+                            <span class="completed">{{mobilePhone}}</span>
+
+                            <input type="hidden" value="{{_id}}" name="id">
+                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
+                        </form>
+                    {{else}}
+                        <form action="/uncomplete" method="POST">                        
+                            <input type="checkbox" name="uncomplited">
+                            <span class="main__title">{{firstName}}</span>
+                            <span class="main__title">{{lastName}}</span>
+                            <span class="main__title email">{{email}}</span>
+                            <span class="main__title">{{mobilePhone}}</span>                          
+                            
+                            <input type="hidden" value="{{_id}}" name="id">
+                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>     
+                        </form>
+                    {{/if}}                        
+                </label>  
             </li>
+
+            
         {{/each}}
+        <form action="/checked" id="checkedtodos" method="POST">
+            <a href="#complete"></a>
+        </form>
     </ul>
     
 {{else}}

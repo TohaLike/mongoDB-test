@@ -21,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(todoRoutes);
 
+// app.delete('/complete', () => {})
+
 
 async function start() {
     try {
