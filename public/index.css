@@ -1,5 +1,6 @@
 /* Header section */
 body {
+    font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
 }
 
@@ -44,6 +45,10 @@ body {
     font-size: 35px;
 }
 
+.main__subtitle {
+    font-size: 35px;
+}
+
 .panel__title {
     font-size: 1rem;
     width: 240px;
@@ -62,24 +67,23 @@ body {
 }
 
 .btn__small {
+    transition: .2s ease;
+    color: #000000;
+    box-shadow: none;
     margin-right: 5px;
     background: none;
     border: none;
 }
 
+.btn__small:hover {
+    margin-right: 5px;
+    background-color: #c7c7c7;
+    border: none;
+    /* color: #4100f6; */
+}
+
 .btn__section {
     margin-left: 154px;
-}
-
-.btn__main  {
-    transition: .2s ease;
-    color: #000000;
-    box-shadow: none;
-}
-
-.btn__main:hover  {
-    color: #f00000;
-    box-shadow: none;
 }
 
 .main__title {
