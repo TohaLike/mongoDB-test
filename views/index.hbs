@@ -1,26 +1,40 @@
-<h2>Сотрудники: <span>{{todos.length}}</span></h2> 
+<div class="main__panel">
+    <h1 class="employee__length">Сотрудники: <span>{{todos.length}}</span></h1> 
+
+    <div class="main__label"> 
+        <span class="panel__title">Имя</span>
+        <span class="panel__title">Фамилия</span>
+        <span class="panel__title email">Почта</span>
+        <span class="panel__title">Телефон</span>
+        <button class="btn__delete__all btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
+    </div>
+</div>
+
 
 {{#if todos.length}}
-    <button class="btn btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
-    
-    <ul>
+    <ul class="todo__management">
         {{#each todos}}     
             <li class="todo">
-                <label>
-                    {{#if complited}}
-                        <form action="/complete" id="complete" method="POST">                        
+                {{#if complited}}
+                    <label>
+                        <form action="/complete" class="task__main" id="complete" method="POST">                        
                             <input type="checkbox" checked name="complited">
-                            <span class="completed">{{firstName}}</span>
-                            <span class="completed">{{lastName}}</span>
-                            <span class="completed email">{{email}}</span>
-                            <span class="completed">{{mobilePhone}}</span>
+                            <span class="main__title">{{firstName}}</span>
+                            <span class="main__title">{{lastName}}</span>
+                            <span class="main__title email">{{email}}</span>
+                            <span class="main__title">{{mobilePhone}}</span>
 
                             <input type="hidden" value="{{_id}}" name="id">
-                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
-                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="remove">Удалить</button>
+                            <div class="btn__section">
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="rename">border_color</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="remove">close</button>
+                            </div>
                         </form>
-                    {{else}}
-                        <form action="/uncomplete" method="POST">                        
+                    </label>  
+                {{else}}
+                    <label>     
+                        <form action="/uncomplete" class="task__main" method="POST">                        
                             <input type="checkbox" name="uncomplited">
                             <span class="main__title">{{firstName}}</span>
                             <span class="main__title">{{lastName}}</span>
@@ -28,18 +42,16 @@
                             <span class="main__title">{{mobilePhone}}</span>                          
                             
                             <input type="hidden" value="{{_id}}" name="id">
-                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
-                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="remove">Удалить</button>
+                            <div class="btn__section">
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="rename">border_color</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="remove">close</button>
+                            </div>
                         </form>
-                    {{/if}}                        
-                </label>  
+                    </label> 
+                {{/if}}                          
             </li>
-
-            
         {{/each}}
-        <form action="/checked" id="checkedtodos" method="POST">
-            <a href="#complete"></a>
-        </form>
     </ul>
     
 {{else}}
