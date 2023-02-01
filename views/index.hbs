@@ -17,6 +17,7 @@
 
                             <input type="hidden" value="{{_id}}" name="id">
                             <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
+                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="remove">Удалить</button>
                         </form>
                     {{else}}
                         <form action="/uncomplete" method="POST">                        
@@ -27,7 +28,8 @@
                             <span class="main__title">{{mobilePhone}}</span>                          
                             
                             <input type="hidden" value="{{_id}}" name="id">
-                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>     
+                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
+                            <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="remove">Удалить</button>
                         </form>
                     {{/if}}                        
                 </label>  

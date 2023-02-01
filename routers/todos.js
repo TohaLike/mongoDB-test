@@ -21,8 +21,6 @@ router.get('/create', (req, res) => {
     });
 });
 
-let saveEmployee = [];
-
 router.post('/create', async (req, res) => {
     const todo = new Todo({
         firstName: req.body.firstName,
@@ -49,6 +47,11 @@ router.post('/complete', async (req, res) => {
         res.redirect('/')
     }
 
+    if (buttons === 'remove') {
+        await todo.remove()
+        res.redirect('/')
+    }
+
     if (buttons === 'save') {
         todo.complited = false;
         await todo.save()
@@ -56,10 +59,14 @@ router.post('/complete', async (req, res) => {
     }
 });
 
-
 router.post('/uncomplete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
     let buttons = req.body.simplebtn;
+
+    if (buttons === 'remove') {
+        await todo.remove()
+        res.redirect('/')
+    }
 
     if (buttons === 'save') {
         todo.complited = true;
