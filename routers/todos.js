@@ -21,6 +21,15 @@ router.get('/create', (req, res) => {
     });
 });
 
+router.get('/rename', async (req, res) => {
+    
+    res.render('rename', {
+        title: 'Rename',
+        isRename: true
+    })
+})
+
+
 router.post('/create', async (req, res) => {
     const todo = new Todo({
         firstName: req.body.firstName,
@@ -52,6 +61,11 @@ router.post('/complete', async (req, res) => {
         res.redirect('/')
     }
 
+    if (buttons === 'rename') {
+        console.log('fg')   
+        res.redirect('/rename')
+    }
+
     if (buttons === 'save') {
         todo.complited = false;
         await todo.save()
@@ -68,6 +82,11 @@ router.post('/uncomplete', async (req, res) => {
         res.redirect('/')
     }
 
+    if (buttons === 'rename') {
+        console.log('fg')   
+        res.redirect('/rename')
+    }
+
     if (buttons === 'save') {
         todo.complited = true;
         await todo.save()
@@ -75,6 +94,15 @@ router.post('/uncomplete', async (req, res) => {
     }
 });
 
+router.post('/rename', async (req, res) => {
+    const todo = Todo.findById(req.body.id)
+    let buttons = req.body.simplebtn;
+
+    if (buttons === 'back') {
+        console.log('!')
+        res.redirect('/')
+    }
+})
 
 module.exports = router
 
