@@ -7,6 +7,11 @@ const schema = new Schema({
         default: false
     },
     
+    edit: {
+        type: Boolean,
+        default: false
+    },
+
     firstName: {
         type: String,
         required: true,

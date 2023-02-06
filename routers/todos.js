@@ -22,13 +22,13 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/rename', async (req, res) => {
-    
+    const todo = await Todo.findById(req.body.id)
+
     res.render('rename', {
         title: 'Rename',
         isRename: true
     })
 })
-
 
 router.post('/create', async (req, res) => {
     const todo = new Todo({
@@ -62,20 +62,22 @@ router.post('/complete', async (req, res) => {
     }
 
     if (buttons === 'rename') {
-        console.log('fg')   
-        res.redirect('/rename')
+        window.onunload(alert())
+        res.end('/rename')
     }
 
     if (buttons === 'save') {
-        todo.complited = false;
+        todo.complited = false
         await todo.save()
         res.redirect('/')
     }
 });
 
+
+// 
 router.post('/uncomplete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-    let buttons = req.body.simplebtn;
+    let buttons = req.body.simplebtn
 
     if (buttons === 'remove') {
         await todo.remove()
@@ -83,7 +85,9 @@ router.post('/uncomplete', async (req, res) => {
     }
 
     if (buttons === 'rename') {
-        console.log('fg')   
+        todo.edit = true
+        console.log(todo)
+        await todo.save()
         res.redirect('/rename')
     }
 
@@ -92,23 +96,15 @@ router.post('/uncomplete', async (req, res) => {
         await todo.save()
         res.redirect('/')
     }
-});
+})
+
+
 
 router.post('/rename', async (req, res) => {
-    const todorename = new renameTodo ({
-        firstName: req.body.renameFirstName,
-        lastName: req.body.renameLastName,
-        email: req.body.renameEmail,
-        mobilePhone: req.body.renameMobilePhone
-    })
-
+    const todo = Todo.findById(req.body.id)
     let buttons = req.body.simplebtn;
 
     if (buttons === 'back') {
-        // console.log(todorename)
-        // await Todo.replaceOne()
-        res.redirect('/')
-    } else {
         console.log('!')
         res.redirect('/')
     }
