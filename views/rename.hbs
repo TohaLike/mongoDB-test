@@ -1,6 +1,20 @@
 <form action="/rename" method="POST">
+    <h2>Hello</h2>
 
-    <h1>Hello</h1>
 
-    <button class="simple__btn" type="submit" name="simplebtn" value="back">Back</button>
+    <div class="inputsrename">
+        <input class="wrtie-inputs" type="text"  name="firstName" required placeholder="Имя" value="{{firstName}}">
+        <input class="wrtie-inputs" type="text"  name="lastName" required placeholder="Фамилия" value="{{lastName}}">
+        <input class="wrtie-inputs" type="text"  name="email" required placeholder="Электронная почта" value="{{email}}">
+        <input class="wrtie-inputs" type="text"  name="mobilePhone" required placeholder="Мобильный телефон" value="{{mobilePhone}}">
+        
+        <label>Обновить данные</label>
+    </div>
+
+    
+    <button class="simple__btn" type="submit" name="simplebtn" value="back">Update</button>
+
+    
+        <h2></h2>
+
 </form>
