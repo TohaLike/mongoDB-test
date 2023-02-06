@@ -99,20 +99,13 @@ router.post('/uncomplete', async (req, res) => {
 
 router.post('/rename', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-    let buttons = req.body.simplebtn
+    let buttons = req.body.simplebtn;
+
+
 
     if (buttons === 'back') {
-        await Todo.findOneAndUpdate(
-            {
-                edit: true
-            }, 
-            {
-                edit: false, 
-                firstName: req.body.firstName, 
-                lastName: req.body.lastName,
-                email: req.body.email,
-                mobilePhone: req.body.mobilePhone
-            })
+
+        await Todo.findOneAndUpdate({firstName: req.body.firstName})
 
         res.redirect('/')
     }
