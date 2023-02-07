@@ -91,7 +91,7 @@ router.post('/uncomplete', async (req, res) => {
 
     if (buttons === 'rename') {
         todo.edit = true
-        console.log(todo)
+        // console.log(todo)
         await todo.save()
         res.redirect('/rename')
     }
