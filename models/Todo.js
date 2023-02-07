@@ -28,6 +28,14 @@ const schema = new Schema({
         trim: true
     },
 
+    jobTitle: {
+        type: String,
+        required: true,
+        maxLength: 255, 
+        minLength: 1,
+        trim: true
+    },
+
     email: {
         type: String,
         required: true,

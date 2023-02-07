@@ -1,13 +1,16 @@
 <div class="main__panel">
+    
     <h1 class="employee__length">Сотрудники: <span>{{todos.length}}</span></h1> 
 
-    <div class="main__label"> 
+    <label class="main__label">
+        <input type="checkbox" name="complited"> 
         <span class="panel__title">Имя</span>
         <span class="panel__title">Фамилия</span>
-        <span class="panel__title email">Почта</span>
-        <span class="panel__title">Телефон</span>
+        <span class="panel__title">Должность</span>
+        <span class="panel__title email__title">Почта</span>
+        <span class="panel__title mobile__phone">Телефон</span>
         <button class="btn__delete__all btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
-    </div>
+    </label>
 </div>
 
 
@@ -16,13 +19,14 @@
         {{#each todos}}     
             <li class="todo">
                 {{#if complited}}
-                    <label>
+                    <label form="complete" name="labelbtn" value="add">
                         <form action="/complete" class="task__main" id="complete" method="POST">                        
                             <input type="checkbox" checked name="complited">
-                            <span class="main__title">{{firstName}}</span>
-                            <span class="main__title">{{lastName}}</span>
-                            <span class="main__title email">{{email}}</span>
-                            <span class="main__title">{{mobilePhone}}</span>
+                            <span class="main__title first__name">{{firstName}}</span>
+                            <span class="main__title last__name">{{lastName}}</span>
+                            <span class="main__title job__title">{{jobTitle}}</span>
+                            <span class="main__title email__title">{{email}}</span>
+                            <span class="main__title mobile__phone">{{mobilePhone}}</span>
 
                             <input type="hidden" value="{{_id}}" name="id">
                             <div class="btn__section">
@@ -34,13 +38,14 @@
                     </label>  
                 {{else}}
                     <label>     
-                        <form action="/uncomplete" class="task__main" method="POST">                        
+                        <form action="/uncomplete" class="task__main" method="POST">   
                             <input type="checkbox" name="uncomplited">
-                            <span class="main__title">{{firstName}}</span>
-                            <span class="main__title">{{lastName}}</span>
-                            <span class="main__title email">{{email}}</span>
-                            <span class="main__title">{{mobilePhone}}</span>                          
-                            
+                            <span class="main__title first__name">{{firstName}}</span>
+                            <span class="main__title last__name">{{lastName}}</span>
+                            <span class="main__title job__title">{{jobTitle}}</span>
+                            <span class="main__title email__title">{{email}}</span>
+                            <span class="main__title mobile__phone">{{mobilePhone}}</span>
+
                             <input type="hidden" value="{{_id}}" name="id">
                             <div class="btn__section">
                                 <button class="btn__small large material-icons" name="simplebtn" type="submit" value="save">add</button>

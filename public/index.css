@@ -51,13 +51,18 @@ body {
 
 .panel__title {
     font-size: 1rem;
-    width: 240px;
+    width: 193px;
+}
+
+.mobile__phone {
+    position: relative;
+    left: 70px;
 }
 
 .btn__delete__all {
     background-color: #9c1c1c;
     position: relative;
-    left: 200px;
+    left: 183px;
 }
 
 
@@ -88,7 +93,7 @@ body {
 
 .main__title {
     font-size: 1rem;
-    width: 243px;
+    width: 194px;
 }
 
 .task__main {
