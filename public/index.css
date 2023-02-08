@@ -128,3 +128,13 @@ body {
 .todo i {
     z-index: 2;
 }
+
+
+/* Rename page */
+
+
+.rename__btn {
+    width: 93px;
+    height: 32px;
+    
+}

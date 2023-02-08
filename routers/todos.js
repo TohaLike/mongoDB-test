@@ -24,11 +24,12 @@ router.get('/create', (req, res) => {
 router.get('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true}).lean()
 
-    res.render('rename', {
-        title: 'Rename',
-        isRename: true,
-        rename
-    })
+        res.render('rename', {
+            title: 'Rename',
+            isRename: true,
+            rename
+        })
+    
 })
 
 // Page for create form ----------------------
@@ -53,6 +54,7 @@ router.post('/create', async (req, res) => {
 // Form finished ------------------------------
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
+    const rename = await Todo.find({edit: true})
     const buttons = req.body.simplebtn;
 
     if (buttons === 'delete') {
@@ -65,10 +67,16 @@ router.post('/complete', async (req, res) => {
         res.redirect('/')
     }
 
-    if (buttons === 'rename') {
-        todo.edit = true
-        await todo.save()
-        res.redirect('/rename')
+    if (rename.length === 1) {
+        !buttons === 'renmae'
+        todo.edit = false
+        res.redirect('/')
+    } else {
+        if (buttons === 'rename') {
+            todo.edit = true
+            await todo.save()
+            res.redirect('/rename')
+        }
     }
 
     if (buttons === 'save') {
@@ -82,6 +90,7 @@ router.post('/complete', async (req, res) => {
 // Form unfinished ------------------------------
 router.post('/uncomplete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
+    const rename = await Todo.find({edit: true})
     const buttons = req.body.simplebtn
     
     if (buttons === 'remove') {
@@ -89,10 +98,15 @@ router.post('/uncomplete', async (req, res) => {
         res.redirect('/')
     }
 
-    if (buttons === 'rename') {
-        todo.edit = true
-        await todo.save()
-        res.redirect('/rename')
+    if (rename.length === 1) {
+        !buttons === 'renmae'
+        res.redirect('/')
+    } else {
+        if (buttons === 'rename') {
+            todo.edit = true
+            await todo.save()
+            res.redirect('/rename')
+        }
     }
 
     if (buttons === 'save') {
@@ -106,7 +120,6 @@ router.post('/uncomplete', async (req, res) => {
 router.post('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true})
 
-    
     await Todo.findOneAndUpdate(
         {
             edit: true
@@ -122,7 +135,6 @@ router.post('/rename', async (req, res) => {
 
     if (rename.length === 1) {
         res.redirect('/') 
-        
     } else {
         res.redirect('/rename') 
     }

@@ -2,6 +2,12 @@
   <div class="nav-wrapper">
     <a href="/" class="brand-logo">МЦОБ Онлайн-сервисы</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        
+        {{#if isRename}}
+        <li class="active"><a href="/rename">Редактирование</a></li>
+        {{else}}
+        <li><a href="/rename">Редактирование</a></li>
+        {{/if}}
 
         {{#if isIndex}}
         <li class="active"><a href="/">Сотрудники</a></li>
