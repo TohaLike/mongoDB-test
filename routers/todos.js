@@ -1,7 +1,7 @@
-const {Router} = require('express');
-const {remove, findById} = require('../models/Todo');
-const Todo = require('../models/Todo');
-const router = Router();
+const {Router} = require('express')
+const {remove, findById} = require('../models/Todo')
+const Todo = require('../models/Todo')
+const router = Router()
 
 
 router.get('/', async (req, res) => {
@@ -22,11 +22,12 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/rename', async (req, res) => {
-    const todo = await Todo.findById(req.body.id)
+    const rename = await Todo.find({edit: true}).lean()
 
     res.render('rename', {
         title: 'Rename',
-        isRename: true
+        isRename: true,
+        rename
     })
 })
 
@@ -42,10 +43,10 @@ router.post('/create', async (req, res) => {
     
     try { 
         await todo.save()
-        res.redirect('/');
+        res.redirect('/')
     } catch (err) {
         console.log(err)
-        res.redirect('/create');
+        res.redirect('/create')
     }
 });
 
@@ -66,7 +67,6 @@ router.post('/complete', async (req, res) => {
 
     if (buttons === 'rename') {
         todo.edit = true
-        console.log(todo)
         await todo.save()
         res.redirect('/rename')
     }
@@ -82,8 +82,8 @@ router.post('/complete', async (req, res) => {
 // Form unfinished ------------------------------
 router.post('/uncomplete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-    let buttons = req.body.simplebtn
-
+    const buttons = req.body.simplebtn
+    
     if (buttons === 'remove') {
         await todo.remove()
         res.redirect('/')
@@ -91,7 +91,6 @@ router.post('/uncomplete', async (req, res) => {
 
     if (buttons === 'rename') {
         todo.edit = true
-        // console.log(todo)
         await todo.save()
         res.redirect('/rename')
     }
@@ -103,28 +102,29 @@ router.post('/uncomplete', async (req, res) => {
     }
 })
 
-
 // Rename page was created to rename form -------------------------
 router.post('/rename', async (req, res) => {
-    const todo = await Todo.findById(req.body.id)
-    let buttons = req.body.simplebtn
+    const rename = await Todo.find({edit: true})
 
-    if (buttons === 'back') {
-        console.log(todo)
-        await Todo.findOneAndUpdate(
-            {
-                edit: true
-            }, 
-            {
-                edit: false, 
-                firstName: req.body.firstName, 
-                lastName: req.body.lastName,
-                jobTitle: req.body.jobTitle,
-                email: req.body.email,
-                mobilePhone: req.body.mobilePhone
-            }) 
+    
+    await Todo.findOneAndUpdate(
+        {
+            edit: true
+        }, 
+        {
+            edit: false, 
+            firstName: req.body.firstName, 
+            lastName: req.body.lastName,
+            jobTitle: req.body.jobTitle,
+            email: req.body.email,
+            mobilePhone: req.body.mobilePhone
+        }) 
 
-        res.redirect('/')
+    if (rename.length === 1) {
+        res.redirect('/') 
+        
+    } else {
+        res.redirect('/rename') 
     }
 })
 
