@@ -138,3 +138,8 @@ body {
     height: 32px;
     
 }
+
+.btn__update {
+    position: relative;
+    top: 15px;
+}
