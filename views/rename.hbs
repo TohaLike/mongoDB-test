@@ -1,17 +1,21 @@
 <h2 class="rename__title">Обновить данные</h2>
 
-{{#each rename}}
-    <form action="/rename" method="POST">
-        <div class="inputsrename">
-            <input class="wrtie-inputs" type="text"  name="firstName" required placeholder="Имя" value="{{firstName}}">
-            <input class="wrtie-inputs" type="text"  name="lastName" required placeholder="Фамилия" value="{{lastName}}">
-            <input class="wrtie-inputs" type="text"  name="jobTitle" required placeholder="Должность" value="{{jobTitle}}">
-            <input class="wrtie-inputs" type="text"  name="email" required placeholder="Электронная почта" value="{{email}}">
-            <input class="wrtie-inputs" type="text"  name="mobilePhone" required placeholder="Мобильный телефон" value="{{mobilePhone}}">
-            
-            <label>Обновить данные</label>
-        </div>
+{{#if rename.length}}
+    {{#each rename}}
+        <form action="/rename" method="POST">
+            <div class="inputsrename">
+                <input class="wrtie-inputs" type="text"  name="firstName" required placeholder="Имя" value="{{firstName}}">
+                <input class="wrtie-inputs" type="text"  name="lastName" required placeholder="Фамилия" value="{{lastName}}">
+                <input class="wrtie-inputs" type="text"  name="jobTitle" required placeholder="Должность" value="{{jobTitle}}">
+                <input class="wrtie-inputs" type="text"  name="email" required placeholder="Электронная почта" value="{{email}}">
+                <input class="wrtie-inputs" type="text"  name="mobilePhone" required placeholder="Мобильный телефон" value="{{mobilePhone}}">
+                
+                <label>Обновить данные</label>
+            </div>
 
-        <button class="btn__update btn" type="submit" name="simplebtn" value="back">Обновить</button>
-    </form>
-{{/each}}
+            <button class="btn__update btn" type="submit" name="simplebtn" value="back">Обновить</button>
+        </form>
+    {{/each}}
+{{else}}
+    <a href="/" class="rename__end__text">Ничего нету...</a>
+{{/if}}

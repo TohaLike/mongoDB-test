@@ -131,8 +131,6 @@ body {
 
 
 /* Rename page */
-
-
 .rename__btn {
     width: 93px;
     height: 32px;
@@ -142,4 +140,16 @@ body {
 .btn__update {
     position: relative;
     top: 30px;
+}
+
+.rename__end__text {
+    position: relative;
+    top: 200px;
+    color: #000000;
+    font-size: 30px;
+    transition: .2s ease;
+}
+
+.rename__end__text:hover {
+    color: rgb(255, 42, 0);
 }
