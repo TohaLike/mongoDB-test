@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     const todos = await Todo.find().lean();
     
     res.render('index', {
-        title: 'Todos List', 
+        title: 'Сотрудники', 
         isIndex: true,
         todos
     });
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 router.get('/create', (req, res) => {
     res.render('create', {
-        title: 'Create Todo',
+        title: 'Добавить сотрудника',
         isCreate: true
     });
 });
@@ -25,7 +25,7 @@ router.get('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true}).lean()
 
         res.render('rename', {
-            title: 'Rename',
+            title: 'Редактирование',
             isRename: true,
             rename
         })
