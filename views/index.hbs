@@ -9,6 +9,8 @@
         <span class="panel__title">Должность</span>
         <span class="panel__title email__title">Почта</span>
         <span class="panel__title mobile__phone">Телефон</span>
+        <span class="panel__title project__id">Код проекта</span>
+
         <button class="btn__delete__all btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
     </label>
 </div>
@@ -27,8 +29,10 @@
                             <span class="main__title job__title">{{jobTitle}}</span>
                             <span class="main__title email__title">{{email}}</span>
                             <span class="main__title mobile__phone">{{mobilePhone}}</span>
+                            <span class="main__title project__id__main">{{projectId}}</span>
 
                             <input type="hidden" value="{{_id}}" name="id">
+
                             <div class="btn__section">
                                 <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
                                 <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="rename">edit</button>
@@ -45,8 +49,10 @@
                             <span class="main__title job__title">{{jobTitle}}</span>
                             <span class="main__title email__title">{{email}}</span>
                             <span class="main__title mobile__phone">{{mobilePhone}}</span>
+                            <span class="main__title project__id__main">{{projectId}}</span>
 
                             <input type="hidden" value="{{_id}}" name="id">
+
                             <div class="btn__section">
                                 <button class="btn__small large material-icons" name="simplebtn" type="submit" value="save">add</button>
                                 <button class="btn__small large material-icons" name="simplebtn" type="submit" value="rename">edit</button>

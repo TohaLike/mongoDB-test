@@ -56,7 +56,8 @@ router.post('/create', async (req, res) => {
         lastName: req.body.lastName,
         jobTitle: req.body.jobTitle,
         email: req.body.email,
-        mobilePhone: req.body.mobilePhone
+        mobilePhone: req.body.mobilePhone,
+        projectId: req.body.projectId
     });
 
     try { 
@@ -93,30 +94,25 @@ router.post('/addTask', async (req, res) => {
 // Uncomplete task ---------------
 router.post('/uncompleteTask', async (req, res) => {
     const task = await Projects.findById(req.body.id)
-    const rename = await Projects.find({edit: true})
+    const renameTask = await Projects.find({edit: true})
     const buttons = req.body.simplebtn;
-
-    // if (buttons === 'delete') {
-    //     await Projects.deleteMany({complited: true});   
-    //     res.redirect('/')
-    // }
 
     if (buttons === 'remove') {
         await task.remove()
         res.redirect('/tasks')
     }
 
-    // if (rename.length === 1) {
-    //     !buttons === 'renmae'
-    //     task.edit = false
-    //     res.redirect('/')
-    // } else {
-    //     if (buttons === 'rename') {
-    //         task.edit = true
-    //         await task.save()
-    //         res.redirect('/rename')
-    //     }
-    // }
+    if (renameTask.length === 1) {
+        !buttons === 'renmae'
+        task.edit = false
+        res.redirect('/')
+    } else {
+        if (buttons === 'rename') {
+            task.edit = true
+            await task.save()
+            res.redirect('/rename')
+        }
+    }
 
     if (buttons === 'save') {
         task.complited = true
@@ -127,30 +123,25 @@ router.post('/uncompleteTask', async (req, res) => {
 
 router.post('/completeTask', async (req, res) => {
     const task = await Projects.findById(req.body.id)
-    const rename = await Projects.find({edit: true})
+    const renameTask = await Projects.find({edit: true})
     const buttons = req.body.simplebtn;
-
-    // if (buttons === 'delete') {
-    //     await Projects.deleteMany({complited: true});   
-    //     res.redirect('/')
-    // }
 
     if (buttons === 'remove') {
         await task.remove()
         res.redirect('/tasks')
     }
 
-    // if (rename.length === 1) {
-    //     !buttons === 'renmae'
-    //     task.edit = false
-    //     res.redirect('/')
-    // } else {
-    //     if (buttons === 'rename') {
-    //         task.edit = true
-    //         await task.save()
-    //         res.redirect('/rename')
-    //     }
-    // }
+    if (renameTask.length === 1) {
+        !buttons === 'renmae'
+        task.edit = false
+        res.redirect('/')
+    } else {
+        if (buttons === 'rename') {
+            task.edit = true
+            await task.save()
+            res.redirect('/rename')
+        }
+    }
 
     if (buttons === 'save') {
         task.complited = false
@@ -238,7 +229,8 @@ router.post('/rename', async (req, res) => {
             lastName: req.body.lastName,
             jobTitle: req.body.jobTitle,
             email: req.body.email,
-            mobilePhone: req.body.mobilePhone
+            mobilePhone: req.body.mobilePhone,
+            projectId: req.body.projectId
         }) 
 
     if (rename.length === 1) {

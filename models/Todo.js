@@ -50,6 +50,14 @@ const schema = new Schema({
         maxLength: 255, 
         minLength: 1,
         trim: true
+    },
+
+    projectId: {
+        type: Number,
+        required: true,
+        maxLength: 20, 
+        minLength: 1,
+        trim: true
     }
 
 });

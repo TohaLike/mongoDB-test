@@ -54,15 +54,25 @@ body {
     width: 193px;
 }
 
+.project__id {
+    width: 88px;
+}
+
+.project__id__main {
+    width: 88px;
+    position: absolute;
+    left: 1291px;
+}
+
 .mobile__phone {
     position: relative;
-    left: 70px;
+    left: 40px;
 }
 
 .btn__delete__all {
     background-color: #9c1c1c;
     position: relative;
-    left: 183px;
+    left: 94px;
 }
 
 
