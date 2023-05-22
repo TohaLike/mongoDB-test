@@ -14,47 +14,38 @@
 </div>
 
 
+{{!-- <form action="/complete" method="POST">                        
+    <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="deleteuse">Удалить</button>
+</form> --}}
+
 {{#if todos.length}}
-    <ul class="todo__management">
-        {{#each todos}}     
+
+    <ul>
+        {{#each todos}}
             <li class="todo">
-                {{#if complited}}
-                    <label form="complete" name="labelbtn" value="add">
-                        <form action="/complete" class="task__main" id="complete" method="POST">                        
-                            <input type="checkbox" checked name="complited">
-                            <span class="main__title first__name">{{firstName}}</span>
-                            <span class="main__title last__name">{{lastName}}</span>
-                            <span class="main__title job__title">{{jobTitle}}</span>
-                            <span class="main__title email__title">{{email}}</span>
-                            <span class="main__title mobile__phone">{{mobilePhone}}</span>
-
-                            <input type="hidden" value="{{_id}}" name="id">
-                            <div class="btn__section">
-                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
-                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="rename">edit</button>
-                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="remove">close</button>
-                            </div>
-                        </form>
-                    </label>  
-                {{else}}
-                    <label>     
-                        <form action="/uncomplete" class="task__main" method="POST">   
-                            <input type="checkbox" name="uncomplited">
-                            <span class="main__title first__name">{{firstName}}</span>
-                            <span class="main__title last__name">{{lastName}}</span>
-                            <span class="main__title job__title">{{jobTitle}}</span>
-                            <span class="main__title email__title">{{email}}</span>
-                            <span class="main__title mobile__phone">{{mobilePhone}}</span>
-
-                            <input type="hidden" value="{{_id}}" name="id">
-                            <div class="btn__section">
-                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="save">add</button>
-                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="rename">edit</button>
-                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="remove">close</button>
-                            </div>
-                        </form>
-                    </label> 
-                {{/if}}                          
+                <form action="/complete" method="POST">                        
+                    <label>
+                        {{#if complited}}
+                        <input type="checkbox" checked name="complited">
+                        <span class="completed">{{firstName}}</span>
+                        <span class="completed">{{lastName}}</span>
+                        <span class="completed email">{{email}}</span>
+                        <span class="completed">{{mobilePhone}}</span>
+                        {{else}}
+                        <input type="checkbox" name="complited">
+                        <span class="main__title">{{firstName}}</span>
+                        <span class="main__title">{{lastName}}</span>
+                        <span class="main__title email">{{email}}</span>
+                        <span class="main__title">{{mobilePhone}}</span>                        
+                        {{/if}}
+                        
+                        <input type="hidden" value="{{_id}}" name="id">
+                        
+                        <button class="btn btn-save btn-small" name="simplebtn" type="submit" value="save">Сохранить</button>
+                        <button class="btn btn-delete btn-small" name="simplebtn" type="submit" value="delete">Удалить</button>
+                    </label>                        
+                </form>
+              
             </li>
         {{/each}}
     </ul>
