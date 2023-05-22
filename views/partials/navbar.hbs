@@ -9,6 +9,12 @@
         <li><a href="/rename">Редактирование</a></li>
         {{/if}}
 
+        {{#if isTasks}}
+        <li class="active"><a href="/tasks">Проекты</a></li>
+        {{else}}
+        <li><a href="/tasks">Проекты</a></li>
+        {{/if}}
+
         {{#if isIndex}}
         <li class="active"><a href="/">Сотрудники</a></li>
         {{else}}
@@ -19,6 +25,12 @@
         <li class="active"><a href="/Create">Добавить сотрудника</a></li>
         {{else}}
         <li><a href="/Create">Добавить сотрудника</a></li>
+        {{/if}}
+
+        {{#if isAddTask}}
+        <li class="active"><a href="/addTask">Добавить задачу</a></li>
+        {{else}}
+        <li><a href="/addTask">Добавить задачу</a></li>
         {{/if}}
       
       </ul>

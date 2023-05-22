@@ -20,7 +20,7 @@
             <li class="todo">
                 {{#if complited}}
                     <label form="complete" name="labelbtn" value="add">
-                        <form action="/complete" class="task__main" id="complete" method="POST">                        
+                        <form action="/complete" class="complete__main" id="complete" method="POST">                        
                             <input type="checkbox" checked name="complited">
                             <span class="main__title first__name">{{firstName}}</span>
                             <span class="main__title last__name">{{lastName}}</span>
@@ -38,7 +38,7 @@
                     </label>  
                 {{else}}
                     <label>     
-                        <form action="/uncomplete" class="task__main" method="POST">   
+                        <form action="/uncomplete" class="complete__main" method="POST">   
                             <input type="checkbox" name="uncomplited">
                             <span class="main__title first__name">{{firstName}}</span>
                             <span class="main__title last__name">{{lastName}}</span>

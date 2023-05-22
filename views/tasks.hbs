@@ -1,0 +1,97 @@
+<div class="main__panel">
+    
+    <h1 class="employee__length">Проекты: <span>{{projects.length}}</span></h1> 
+
+    <label class="main__label">
+        <input type="checkbox" name="complited"> 
+        <span class="panel__title">Название проекта</span>
+        <span class="panel__title">Описание</span>
+        <span class="panel__title">Дата начала</span>
+        <span class="panel__title">Дата окончания</span>
+        <span class="panel__title">Штат</span>
+        <span class="panel__title">Клиент</span>
+        <span class="panel__title">Код проекта</span>
+        <button class="btn__delete__all btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
+    </label>
+</div>
+
+{{#if projects.length}}
+    <ul class="todo__management">
+        {{#each projects}}     
+            <li class="todo">
+                {{#if complited}}
+                    <div class="main__label">
+                        <span class="main__title">Название проекта</span>
+                        <span class="main__title">Описание</span>
+                        <span class="main__title">Дата начала</span>
+                        <span class="main__title">Дата окончания</span>
+                        <span class="main__title">Штат</span>
+                        <span class="main__title">Клиент</span>
+                        <span class="main__title">Код проекта</span>
+                    </div>
+                    <label form="completeTask" name="labelbtn" value="add">
+                        <form action="/tasks" class="task__main" id="complete" method="POST">                        
+                            <input type="checkbox" checked name="complited">
+                            <span class="main__title name__Project">{{nameOfProject}}</span>
+                            <span class="main__title description">{{description}}</span>
+                            <span class="main__title data_started">{{dataStarted}}</span>
+                            <span class="main__title data_endend">{{dataEndend}}</span>
+                            <span class="main__title team">{{team}}</span>
+                            <span class="main__title client">{{client}}</span>
+                            <span class="main__title projectId">{{projectId}}</span>
+
+                            <input type="hidden" value="{{_id}}" name="id">
+                            
+                            <div class="btn__section">
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="rename">edit</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="remove">close</button>
+                            </div>
+                        </form>
+                    </label>  
+                {{else}}
+                    <label>     
+                        <form action="/uncompleteTask" method="POST">
+                            <div class="titles__section">
+                                <div class="task__main">
+                                    <span class="main__title">Название проекта</span>
+                                    <span class="main__title">Описание</span>
+                                    <span class="main__title">Дата начала</span>
+                                    <span class="main__title">Дата окончания</span>
+                                    <span class="main__title">Штат</span>
+                                    <span class="main__title">Клиент</span>
+                                    <span class="main__title">Код проекта</span>
+                                </div>
+
+                                <div class="task__main">
+                                    {{!-- <input type="checkbox" name="uncomplited"> --}}
+                                    <span class="main__title name__Project">{{nameOfProject}}</span>
+                                    <span class="main__title description">{{description}}</span>
+                                    <span class="main__title data_started">{{dataStarted}}</span>
+                                    <span class="main__title data_endend">{{dataEndend}}</span>
+                                    <span class="main__title team">{{team}}</span>
+                                    <span class="main__title client">{{client}}</span>
+                                    <span class="main__title projectId">{{projectId}}</span>
+                                </div>
+                            </div>
+
+                            <input type="hidden" value="{{_id}}" name="id">
+
+                            
+                            <div class="btn__section">
+                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="save">add</button>
+                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="rename">edit</button>
+                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="remove">close</button>
+                            </div>
+                        </form>
+                    </label> 
+                {{/if}}                          
+            </li>
+        {{/each}}
+    </ul>
+    
+{{else}}
+    
+    <h2 class="main__subtitle">Добавьте сотрудника...</h2>
+
+{{/if}}

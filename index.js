@@ -21,20 +21,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(todoRoutes);
 
-// app.delete('/complete', () => {})
-
 
 async function start() {
     try {
-        await mongoose.connect('mongodb+srv://AntonM:554431@cluster0.q9ecejt.mongodb.net/?retryWrites=true&w=majority', 
+        mongoose.set('strictQuery', false);
+
+        await mongoose.connect('mongodb+srv://AntonM:554431@cluster0.q9ecejt.mongodb.net/test', 
             {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
-            // useFindAndModify: true
-            });
+            useUnifiedTopology: true            
+        });
+
+        const db = mongoose.connection;
+
+        const collectionOne = db.collection('projects');
+        const collectionTwo = db.collection('todos');
 
         app.listen(PORT, () => {
             console.log('Server has been started...');
+            // console.log(collectionTwo);
         });
 
     } catch (e) {

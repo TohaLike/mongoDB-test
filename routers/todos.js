@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const {remove, findById} = require('../models/Todo')
 const Todo = require('../models/Todo')
+const Projects = require('../models/Projects')
 const router = Router()
 
 
@@ -21,6 +22,23 @@ router.get('/create', (req, res) => {
     });
 });
 
+router.get('/addTask', (req, res) => {
+    res.render('addTask', {
+        title: 'Добавить задачу',
+        isAddTask: true
+    });
+});
+
+router.get('/tasks', async (req, res) => {
+    const projects = await Projects.find().lean()
+
+    res.render('tasks', {
+        title: 'Проекты',
+        isTasks: true,
+        projects
+    })
+})
+
 router.get('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true}).lean()
 
@@ -29,7 +47,6 @@ router.get('/rename', async (req, res) => {
             isRename: true,
             rename
         })
-    
 })
 
 // Page for create form ----------------------
@@ -41,7 +58,7 @@ router.post('/create', async (req, res) => {
         email: req.body.email,
         mobilePhone: req.body.mobilePhone
     });
-    
+
     try { 
         await todo.save()
         res.redirect('/')
@@ -50,6 +67,31 @@ router.post('/create', async (req, res) => {
         res.redirect('/create')
     }
 });
+
+
+// the page for create tasks -------------------------
+router.post('/addTask', async (req, res) => {
+    const projects = new Projects({
+        nameOfProject: req.body.nameOfProject,
+        description: req.body.description,
+        dataStarted: req.body.dataStarted,
+        dataEndend: req.body.dataEndend,
+        team: req.body.team,
+        client: req.body.client,
+        projectId: req.body.projectId
+    });
+    
+    try { 
+        await projects.save()
+        res.redirect('/tasks')
+    } catch (err) {
+        console.log(err)
+        res.redirect('/create')
+    }
+});
+
+
+
 
 // Form finished ------------------------------
 router.post('/complete', async (req, res) => {
