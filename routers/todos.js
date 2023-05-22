@@ -90,8 +90,74 @@ router.post('/addTask', async (req, res) => {
     }
 });
 
+// Uncomplete task ---------------
+router.post('/uncompleteTask', async (req, res) => {
+    const task = await Projects.findById(req.body.id)
+    const rename = await Projects.find({edit: true})
+    const buttons = req.body.simplebtn;
 
+    // if (buttons === 'delete') {
+    //     await Projects.deleteMany({complited: true});   
+    //     res.redirect('/')
+    // }
 
+    if (buttons === 'remove') {
+        await task.remove()
+        res.redirect('/tasks')
+    }
+
+    // if (rename.length === 1) {
+    //     !buttons === 'renmae'
+    //     task.edit = false
+    //     res.redirect('/')
+    // } else {
+    //     if (buttons === 'rename') {
+    //         task.edit = true
+    //         await task.save()
+    //         res.redirect('/rename')
+    //     }
+    // }
+
+    if (buttons === 'save') {
+        task.complited = true
+        await task.save()
+        res.redirect('/tasks')
+    }
+});
+
+router.post('/completeTask', async (req, res) => {
+    const task = await Projects.findById(req.body.id)
+    const rename = await Projects.find({edit: true})
+    const buttons = req.body.simplebtn;
+
+    // if (buttons === 'delete') {
+    //     await Projects.deleteMany({complited: true});   
+    //     res.redirect('/')
+    // }
+
+    if (buttons === 'remove') {
+        await task.remove()
+        res.redirect('/tasks')
+    }
+
+    // if (rename.length === 1) {
+    //     !buttons === 'renmae'
+    //     task.edit = false
+    //     res.redirect('/')
+    // } else {
+    //     if (buttons === 'rename') {
+    //         task.edit = true
+    //         await task.save()
+    //         res.redirect('/rename')
+    //     }
+    // }
+
+    if (buttons === 'save') {
+        task.complited = false
+        await task.save()
+        res.redirect('/tasks')
+    }
+});
 
 // Form finished ------------------------------
 router.post('/complete', async (req, res) => {

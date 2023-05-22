@@ -84,13 +84,10 @@ body {
     margin-right: 5px;
     background-color: #c7c7c7;
     border: none;
-    /* color: #4100f6; */
 }
 
 .btn__section {
-    position: relative;
-    top: -162px;
-    left: 1134px;
+    margin-left: 154px;
 }
 
 .main__title {
@@ -101,12 +98,6 @@ body {
 .complete__main {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-.task__main {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -164,9 +155,91 @@ body {
 
 
 
+/* For tasks page */
+.projects__li article {
+    width: 1280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000;
+    padding: 1em;    
+    border-bottom: 1px solid #9d9d9d;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.projects__li__color article {
+    width: 1280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #dfdfdf;
+    transition: .2s ease;
+    color: #000;
+    padding: 1em;    
+    border-bottom: 1px solid #9d9d9d;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.main__label__tasks {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000;
+    padding: 1em;    
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom: 1px solid #9d9d9d;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.main__panel__tasks {
+    margin-top: 50px;
+}
 
 .titles__section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.btn__section__tasks {
+    position: relative;
+    top: -162px;
+    left: 1134px;
+    z-index: 100;
+}
+
+.task__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects__length {
+    margin: 0;
+    font-size: 20px;
+}
+
+.management__projects {
+    margin-top: 0px;
+}
+
+.projects__li article:hover {
+    width: 100%;
+    background-color: #dfdfdf;
+    color: #000;
+}
+
+.projects__li__color article:hover {
+    width: 100%;
+    background-color: #dfdfdf;
+    color: #000; 
+}
+
+.projects__li i {
+    z-index: 2;
 }
