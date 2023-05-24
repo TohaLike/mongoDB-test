@@ -3,10 +3,12 @@
     <a href="/" class="brand-logo">МЦОБ Специальные данные</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
+        {{#if isRenameTask}}
+        <li><a href="/renameTask" class="editNavTask large material-icons">edit</a></li>
+        {{/if}}
+
         {{#if isRename}}
-        <li class="active"><a href="/rename">Редактирование</a></li>
-        {{else}}
-        <li><a href="/rename">Редактирование</a></li>
+        <li><a href="/rename" class="editNav large material-icons">edit</a></li>
         {{/if}}
 
         {{#if isTasks}}
@@ -22,17 +24,17 @@
         {{/if}}
 
         {{#if isCreate}}
-        <li class="active"><a href="/Create">Добавить сотрудника</a></li>
+        <li class="active nav__create"><a href="/Create">Добавить сотрудника</a></li>
         {{else}}
-        <li><a href="/Create">Добавить сотрудника</a></li>
+        <li class="nav__create"><a href="/Create">Добавить сотрудника</a></li>
         {{/if}}
 
         {{#if isAddTask}}
-        <li class="active"><a href="/addTask">Добавить задачу</a></li>
+        <li class="active nav__create"><a href="/addTask">Добавить задачу</a></li>
         {{else}}
-        <li><a href="/addTask">Добавить задачу</a></li>
+        <li class="nav__create"><a href="/addTask">Добавить задачу</a></li>
         {{/if}}
-      
+
       </ul>
   </div>
 </nav>

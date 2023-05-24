@@ -28,7 +28,7 @@ const projectSchema = new Schema({
     },
 
     dataStarted: {
-        type: Number,
+        type: String,
         required: true,
         maxLength: 20, 
         minLength: 1,
@@ -36,7 +36,7 @@ const projectSchema = new Schema({
     },
 
     dataEndend: {
-        type: Number,
+        type: String,
         required: true,
         maxLength: 20, 
         minLength: 1,

@@ -16,6 +16,25 @@ body {
     margin-right: 300px;
 }
 
+.editNav {
+    width: 114px;
+    text-align: center;
+    position: relative;
+    top: 52px;
+    left: 217px;
+    color: #000;
+    background-color: #c0c0c0;
+}
+
+.editNavTask {
+    width: 93px;
+    text-align: center;
+    position: relative;
+    top: 52px;
+    left: 98px;
+    color: #000;
+    background-color: #c0c0c0;
+}
 
 .add__employee {
     margin-top: 30px;
@@ -103,6 +122,10 @@ body {
 .main__title {
     font-size: 1rem;
     width: 194px;
+}
+
+.title__of__project {
+    width: 1060px;
 }
 
 .complete__main {
@@ -217,9 +240,9 @@ body {
 }
 
 .btn__section__tasks {
-    position: relative;
-    top: -162px;
-    left: 1134px;
+    margin-top: -161px;
+    position: absolute;
+    left: 1455px;
     z-index: 100;
 }
 

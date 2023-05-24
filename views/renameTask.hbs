@@ -1,0 +1,23 @@
+<h2 class="rename__title">Обновить данные проекта</h2>
+
+{{#if projects.length}}
+    {{#each projects}}
+        <form action="/renameTask" method="POST">
+            <div class="inputsrename">
+                <input class="wrtie-inputs" type="text" required name="nameOfProject" placeholder="Название проекта" value="{{nameOfProject}}">
+                <input class="wrtie-inputs" type="text" required name="description" placeholder="Описание" value="{{description}}">
+                <input class="wrtie-inputs" type="text" required name="dataStarted" placeholder="Дата начала" value="{{dataStarted}}">
+                <input class="wrtie-inputs" type="text" required name="dataEndend" placeholder="Дата окончания" value="{{dataEndend}}">
+                <input class="wrtie-inputs" type="text" required name="team" placeholder="Штат" value="{{team}}">
+                <input class="wrtie-inputs" type="text" required name="client" placeholder="Клиент" value="{{client}}">
+                <input class="wrtie-inputs" type="text" required name="projectId" placeholder="Код проекта" value="{{projectId}}">
+
+                <label>Обновить данные проекта</label>
+            </div>
+
+            <button class="btn__update btn" type="submit" name="simplebtn" value="back">Обновить</button>
+        </form>
+    {{/each}}
+{{else}}
+    <a href="/" class="rename__end__text">Ничего нету...</a>
+{{/if}}

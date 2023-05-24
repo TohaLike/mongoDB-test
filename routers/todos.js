@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     res.render('index', {
         title: 'Сотрудники', 
         isIndex: true,
+        isRename: true,
         todos
     });
 });
@@ -35,6 +36,7 @@ router.get('/tasks', async (req, res) => {
     res.render('tasks', {
         title: 'Проекты',
         isTasks: true,
+        isRenameTask: true,
         projects
     })
 })
@@ -42,10 +44,18 @@ router.get('/tasks', async (req, res) => {
 router.get('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true}).lean()
 
-        res.render('rename', {
+    res.render('rename', {
+        title: 'Редактирование',
+        rename
+    })
+})
+
+router.get('/renameTask', async (req, res) => {
+    const projects = await Projects.find({edit: true}).lean()
+
+        res.render('renameTask', {
             title: 'Редактирование',
-            isRename: true,
-            rename
+            projects
         })
 })
 
@@ -87,7 +97,7 @@ router.post('/addTask', async (req, res) => {
         res.redirect('/tasks')
     } catch (err) {
         console.log(err)
-        res.redirect('/create')
+        res.redirect('/addTask')
     }
 });
 
@@ -103,14 +113,14 @@ router.post('/uncompleteTask', async (req, res) => {
     }
 
     if (renameTask.length === 1) {
-        !buttons === 'renmae'
+        !buttons === 'renameTask'
         task.edit = false
         res.redirect('/')
     } else {
-        if (buttons === 'rename') {
+        if (buttons === 'renameTask') {
             task.edit = true
             await task.save()
-            res.redirect('/rename')
+            res.redirect('/renameTask')
         }
     }
 
@@ -132,14 +142,14 @@ router.post('/completeTask', async (req, res) => {
     }
 
     if (renameTask.length === 1) {
-        !buttons === 'renmae'
+        !buttons === 'renameTask'
         task.edit = false
         res.redirect('/')
     } else {
-        if (buttons === 'rename') {
+        if (buttons === 'renameTask') {
             task.edit = true
             await task.save()
-            res.redirect('/rename')
+            res.redirect('/renameTask')
         }
     }
 
@@ -237,6 +247,32 @@ router.post('/rename', async (req, res) => {
         res.redirect('/') 
     } else {
         res.redirect('/rename') 
+    }
+})
+
+// The renameTask page ---------------------------
+router.post('/renameTask', async (req, res) => {
+    const renameTask = await Projects.find({edit: true})
+
+    await Projects.findOneAndUpdate(
+        {
+            edit: true
+        }, 
+        {
+            edit: false,
+            nameOfProject: req.body.nameOfProject,
+            description: req.body.description,
+            dataStarted: req.body.dataStarted,
+            dataEndend: req.body.dataEndend,
+            team: req.body.team,
+            client: req.body.client,
+            projectId: req.body.projectId
+        }) 
+
+    if (renameTask.length === 1) {
+        res.redirect('/tasks') 
+    } else {
+        res.redirect('/renameTask') 
     }
 })
 
