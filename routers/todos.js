@@ -110,7 +110,8 @@ router.post('/create', async (req, res) => {
         jobTitle: req.body.jobTitle,
         email: req.body.email,
         mobilePhone: req.body.mobilePhone,
-        projectId: req.body.projectId
+        projectId: req.body.projectId,
+        employeeId: req.body.employeeId
     });
 
     try { 
@@ -378,7 +379,8 @@ router.post('/rename', async (req, res) => {
             jobTitle: req.body.jobTitle,
             email: req.body.email,
             mobilePhone: req.body.mobilePhone,
-            projectId: req.body.projectId
+            projectId: req.body.projectId,
+            employeeId: req.body.employeeId
         }) 
 
     if (rename.length === 1) {

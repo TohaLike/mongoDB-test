@@ -80,22 +80,34 @@ body {
 
 .panel__title {
     font-size: 1rem;
-    width: 193px;
+    width: 156px;
 }
 
 .project__id {
+    position: relative;
+    left: 46px;
     width: 88px;
+}
+
+.employee__id {
+    position: relative;
+    left: 74px;
 }
 
 .project__id__main {
     width: 88px;
     position: absolute;
-    left: 1291px;
+    left: 1159px;
+}
+
+.employee__id__main {
+    position: relative;
+    left: 158px;
 }
 
 .mobile__phone {
     position: relative;
-    left: 40px;
+    left: 71px;
 }
 
 .btn__delete__all {
@@ -131,7 +143,7 @@ body {
 
 .main__title {
     font-size: 1rem;
-    width: 194px;
+    width: 157px;
 }
 
 .title__of__project {

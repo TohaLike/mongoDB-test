@@ -57,6 +57,14 @@ const schema = new Schema({
         maxLength: 20, 
         minLength: 1,
         trim: true
+    },
+
+    employeeId: {
+        type: Number,
+        required: true,
+        maxLength: 20, 
+        minLength: 1,
+        trim: true
     }
 
 });
