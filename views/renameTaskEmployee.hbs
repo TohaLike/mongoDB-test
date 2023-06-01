@@ -1,0 +1,21 @@
+<h2 class="rename__title">Обновить данные задачи</h2>
+
+{{#if tasks.length}}
+    {{#each tasks}}
+        <form action="/renameTaskEmployee" method="POST">
+            <div class="inputsrename">
+                <input class="wrtie-inputs" type="text" required name="employeeId" placeholder="Код сотрудника" value="{{employeeId}}">
+                <input class="wrtie-inputs" type="text" required name="tasksId" placeholder="Код задачи" value="{{tasksId}}">
+                <input class="wrtie-inputs" type="text" required name="projectId" placeholder="Код проекта" value="{{projectId}}">
+                <input class="wrtie-inputs" type="text" required name="email" placeholder="Почта" value="{{email}}">
+                <input class="wrtie-inputs" type="text" required name="taskEmployee" placeholder="Задача сотрудника" value="{{taskEmployee}}">
+
+                <label>Обновить данные задачи</label>
+            </div>
+
+            <button class="btn__update btn" type="submit" name="simplebtn" value="back">Обновить</button>
+        </form>
+    {{/each}}
+{{else}}
+    <a href="/" class="rename__end__text">Ничего нету...</a>
+{{/if}}

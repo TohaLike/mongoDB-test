@@ -21,7 +21,7 @@ body {
     text-align: center;
     position: relative;
     top: 52px;
-    left: 217px;
+    left: 303px;
     color: #000;
     background-color: #c0c0c0;
 }
@@ -31,7 +31,17 @@ body {
     text-align: center;
     position: relative;
     top: 52px;
-    left: 98px;
+    left: 184px;
+    color: #000;
+    background-color: #c0c0c0;
+}
+
+.editNavTaskEmployee {
+    width: 81px;
+    text-align: center;
+    position: relative;
+    top: 52px;
+    left: 86px;
     color: #000;
     background-color: #c0c0c0;
 }
@@ -246,6 +256,13 @@ body {
     z-index: 100;
 }
 
+.btn__section__tasksEmployee {
+    margin-top: -122px;
+    position: absolute;
+    left: 1455px;
+    z-index: 100;
+}
+
 .task__main {
     display: flex;
     flex-direction: column;
@@ -253,6 +270,11 @@ body {
 }
 
 .projects__length {
+    margin: 0;
+    font-size: 20px;
+}
+
+.tasksEmployee__length {
     margin: 0;
     font-size: 20px;
 }

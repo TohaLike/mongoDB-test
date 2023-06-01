@@ -1,0 +1,80 @@
+<div class="main__panel__tasks">
+    <label class="main__label__tasks">
+        <h2 class="tasksEmployee__length">Задачи: <span>{{tasksEmployee.length}}</span></h2> 
+    </label>
+</div>
+
+{{#if tasksEmployee.length}}
+    <ul class="management__projects">
+        {{#each tasksEmployee}}     
+            {{#if complited}}
+                <li class="projects__li__color">
+                    <article class="colorProject" form="completeTaskEmployee"  name="labelbtn" value="add">                   
+                        <form action="/completeTaskEmployee" id="complete" method="POST">  
+                            <div class="titles__section">
+                                <div class="task__main">
+                                    <span class="main__title">Код сотрудника:</span>
+                                    <span class="main__title">Код задачи:</span>
+                                    <span class="main__title">Код проекта:</span>
+                                    <span class="main__title">Почта:</span>
+                                    <span class="main__title">Задача сотрудника:</span>
+                                </div>                 
+                                    
+                                <div class="task__main">
+                                    <span class="main__title title__of__project employeeId">{{employeeId}}</span>
+                                    <span class="main__title title__of__project tasksId">{{tasksId}}</span>
+                                    <span class="main__title title__of__project projectId">{{projectId}}</span>
+                                    <span class="main__title title__of__project email">{{email}}</span>
+                                    <span class="main__title title__of__project taskEmployee">{{taskEmployee}}</span>
+                                </div>
+                            </div>
+
+                            <input type="hidden" value="{{_id}}" name="id">
+                            
+                            
+                            <div class="btn__section__tasksEmployee">
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="renameTask">edit</button>
+                                <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="remove">close</button>
+                            </div>
+                        </form>
+                    </article>  
+                </li>
+            {{else}}
+                <li class="projects__li">
+                    <article>     
+                        <form action="/uncompleteTaskEmployee" method="POST">
+                            <div class="titles__section">
+                              <div class="task__main">
+                                    <span class="main__title">Код сотрудника:</span>
+                                    <span class="main__title">Код задачи:</span>
+                                    <span class="main__title">Код проекта:</span>
+                                    <span class="main__title">Почта:</span>
+                                    <span class="main__title">Задача сотрудника:</span>
+                                </div>                 
+                                    
+                                <div class="task__main">
+                                    <span class="main__title title__of__project employeeId">{{employeeId}}</span>
+                                    <span class="main__title title__of__project tasksId">{{tasksId}}</span>
+                                    <span class="main__title title__of__project projectId">{{projectId}}</span>
+                                    <span class="main__title title__of__project email">{{email}}</span>
+                                    <span class="main__title title__of__project taskEmployee">{{taskEmployee}}</span>
+                                </div>
+                            </div>
+
+                            <input type="hidden" value="{{_id}}" name="id">
+
+                            <div class="btn__section__tasksEmployee">
+                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="save">add</button>
+                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="renameTask">edit</button>
+                                <button class="btn__small large material-icons" name="simplebtn" type="submit" value="remove">close</button>
+                            </div>
+                        </form>
+                    </article>
+                </li> 
+            {{/if}}                          
+        {{/each}}
+    </ul>
+{{else}}
+    <h2 class="main__subtitle">Добавьте задачу...</h2>
+{{/if}}
