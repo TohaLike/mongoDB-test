@@ -83,13 +83,13 @@ router.post('/create', async (req, res) => {
 // the page for create tasks -------------------------
 router.post('/addTask', async (req, res) => {
     const projects = new Projects({
+        projectId: req.body.projectId,
         nameOfProject: req.body.nameOfProject,
         description: req.body.description,
         dataStarted: req.body.dataStarted,
         dataEndend: req.body.dataEndend,
         team: req.body.team,
-        client: req.body.client,
-        projectId: req.body.projectId
+        client: req.body.client
     });
     
     try { 
@@ -260,13 +260,13 @@ router.post('/renameTask', async (req, res) => {
         }, 
         {
             edit: false,
+            projectId: req.body.projectId,
             nameOfProject: req.body.nameOfProject,
             description: req.body.description,
             dataStarted: req.body.dataStarted,
             dataEndend: req.body.dataEndend,
             team: req.body.team,
-            client: req.body.client,
-            projectId: req.body.projectId
+            client: req.body.client
         }) 
 
     if (renameTask.length === 1) {

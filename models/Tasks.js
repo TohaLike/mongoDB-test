@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const projectSchema = new Schema({
+const tasksSchema = new Schema({
     complited: {
         type: Boolean,
         default: false
@@ -11,6 +11,22 @@ const projectSchema = new Schema({
         default: false
     },
 
+    employeeId: {
+        type: Number,
+        required: true,
+        maxLength: 20, 
+        minLength: 1,
+        trim: true
+    },
+
+    tasksId: {
+        type: Number,
+        required: true,
+        maxLength: 20, 
+        minLength: 1,
+        trim: true
+    },
+
     projectId: {
         type: Number,
         required: true,
@@ -19,7 +35,7 @@ const projectSchema = new Schema({
         trim: true
     },
 
-    nameOfProject: {
+    email: {
         type: String,
         required: true,
         maxLength: 255, 
@@ -27,39 +43,7 @@ const projectSchema = new Schema({
         trim: true
     },
 
-    description: {
-        type: String,
-        required: true,
-        maxLength: 255, 
-        minLength: 1,
-        trim: true
-    },
-
-    dataStarted: {
-        type: String,
-        required: true,
-        maxLength: 20, 
-        minLength: 1,
-        trim: true
-    },
-
-    dataEndend: {
-        type: String,
-        required: true,
-        maxLength: 20, 
-        minLength: 1,
-        trim: true
-    },
-
-    team: {
-        type: Number,
-        required: true,
-        maxLength: 20, 
-        minLength: 1,
-        trim: true
-    },
-
-    client: {
+    taskEmployee: {
         type: String,
         required: true,
         maxLength: 255, 
@@ -70,4 +54,4 @@ const projectSchema = new Schema({
 })
 
 
-module.exports = model('Projects', projectSchema)
+module.exports = model('Tasks', tasksSchema)

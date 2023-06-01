@@ -13,23 +13,23 @@
                         <form action="/completeTask" id="complete" method="POST">  
                             <div class="titles__section">
                                 <div class="task__main">
+                                    <span class="main__title">Код проекта:</span>
                                     <span class="main__title">Название проекта:</span>
                                     <span class="main__title">Описание:</span>
                                     <span class="main__title">Дата начала:</span>
                                     <span class="main__title">Дата окончания:</span>
                                     <span class="main__title">Штат:</span>
                                     <span class="main__title">Клиент:</span>
-                                    <span class="main__title">Код проекта:</span>
                                 </div>                 
                                     
                                 <div class="task__main">
+                                    <span class="main__title title__of__project projectId">{{projectId}}</span>
                                     <span class="main__title title__of__project name__Project">{{nameOfProject}}</span>
                                     <span class="main__title title__of__project description">{{description}}</span>
                                     <span class="main__title title__of__project data_started">{{dataStarted}}</span>
                                     <span class="main__title title__of__project data_endend">{{dataEndend}}</span>
                                     <span class="main__title title__of__project team">{{team}}</span>
                                     <span class="main__title title__of__project client">{{client}}</span>
-                                    <span class="main__title title__of__project projectId">{{projectId}}</span>
                                 </div>
                             </div>
 
@@ -50,23 +50,23 @@
                         <form action="/uncompleteTask" method="POST">
                             <div class="titles__section">
                                 <div class="task__main">
+                                    <span class="main__title">Код проекта:</span>
                                     <span class="main__title">Название проекта:</span>
                                     <span class="main__title">Описание:</span>
                                     <span class="main__title">Дата начала:</span>
                                     <span class="main__title">Дата окончания:</span>
                                     <span class="main__title">Штат:</span>
                                     <span class="main__title">Клиент:</span>
-                                    <span class="main__title">Код проекта:</span>
                                 </div>
 
                                 <div class="task__main">
+                                    <span class="main__title title__of__project projectId">{{projectId}}</span>
                                     <span class="main__title title__of__project name__Project">{{nameOfProject}}</span>
                                     <span class="main__title title__of__project description">{{description}}</span>
                                     <span class="main__title title__of__project data_started">{{dataStarted}}</span>
                                     <span class="main__title title__of__project data_endend">{{dataEndend}}</span>
                                     <span class="main__title title__of__project team">{{team}}</span>
                                     <span class="main__title title__of__project client">{{client}}</span>
-                                    <span class="main__title title__of__project projectId">{{projectId}}</span>
                                 </div>
                             </div>
 
@@ -84,5 +84,5 @@
         {{/each}}
     </ul>
 {{else}}
-    <h2 class="main__subtitle">Добавьте сотрудника...</h2>
+    <h2 class="main__subtitle">Добавьте задачу...</h2>
 {{/if}}
