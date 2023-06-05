@@ -154,7 +154,8 @@ router.post('/addTaskEmployee', async (req, res) => {
         tasksId: req.body.tasksId,
         projectId: req.body.projectId,
         email: req.body.email,
-        taskEmployee: req.body.taskEmployee
+        taskEmployee: req.body.taskEmployee,
+        deadline: req.body.deadline
     });
     
     try { 
@@ -433,7 +434,8 @@ router.post('/renameTaskEmployee', async (req, res) => {
             tasksId: req.body.tasksId,
             projectId: req.body.projectId,
             email: req.body.email,
-            taskEmployee: req.body.taskEmployee
+            taskEmployee: req.body.taskEmployee,
+            deadline: req.body.deadline
         }) 
 
     if (renameTaskEmployee.length === 1) {

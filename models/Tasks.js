@@ -49,6 +49,14 @@ const tasksSchema = new Schema({
         maxLength: 255, 
         minLength: 1,
         trim: true
+    },
+
+    deadline: {
+        type: String,
+        required: true,
+        maxLength: 255, 
+        minLength: 1,
+        trim: true
     }
 
 })
