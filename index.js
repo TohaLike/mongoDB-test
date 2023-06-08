@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 const todoRoutes = require('./routers/todos');
+const projectRoutes = require('./routers/projects');
+const tasksRoutes = require('./routers/tasks');
+
+
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
@@ -20,6 +24,9 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(todoRoutes);
+app.use(projectRoutes);
+app.use(tasksRoutes);
+
 
 
 async function start() {

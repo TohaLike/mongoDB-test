@@ -310,3 +310,14 @@ body {
 .projects__li i {
     z-index: 2;
 }
+
+
+.btn__delete__all__projects {
+    margin-left: 1043px;
+    background-color: #9c1c1c;
+}
+
+.btn__delete__all__employee {
+    margin-left: 1058px;
+    background-color: #9c1c1c;
+}
