@@ -58,42 +58,17 @@ taskRouter.post('/addTaskEmployee', async (req, res) => {
     }
 });
 
-taskRouter.post('/uncompleteTaskEmployee', async (req, res) => {
-    const tasksEmployee = await Tasks.findById(req.body.id)
-    const renameTaskEmployee = await Tasks.find({edit: true})
-    const buttons = req.body.simplebtn;
-
-    if (buttons === 'remove') {
-        await tasksEmployee.remove()
-        res.redirect('/taskEmployee')
-    }
-
-    if (renameTaskEmployee.length === 1) {
-        !buttons === 'renameTask'
-        tasksEmployee.edit = false
-        res.redirect('/taskEmployee')
-    } else {
-        if (buttons === 'renameTask') {
-            tasksEmployee.edit = true
-            await tasksEmployee.save()
-            res.redirect('/renameTaskEmployee')
-        }
-    }
-
-    if (buttons === 'save') {
-        tasksEmployee.complited = true
-        await tasksEmployee.save()
-        res.redirect('/taskEmployee')
-    }
-});
-
-
 
 // Uncomplete employee ---------------
 taskRouter.post('/completeTaskEmployee', async (req, res) => {
     const tasksEmployee = await Tasks.findById(req.body.id)
     const renameTaskEmployee = await Tasks.find({edit: true})
     const buttons = req.body.simplebtn;
+
+    if (buttons === 'delete') {
+        await Tasks.deleteMany({complited: true});   
+        res.redirect('/taskEmployee')
+    }
 
     if (buttons === 'remove') {
         await tasksEmployee.remove()
@@ -114,6 +89,37 @@ taskRouter.post('/completeTaskEmployee', async (req, res) => {
 
     if (buttons === 'save') {
         tasksEmployee.complited = false
+        await tasksEmployee.save()
+        res.redirect('/taskEmployee')
+    }
+});
+
+
+taskRouter.post('/uncompleteTaskEmployee', async (req, res) => {
+    const tasksEmployee = await Tasks.findById(req.body.id)
+    const renameTaskEmployee = await Tasks.find({edit: true})
+    const buttons = req.body.simplebtn;
+
+
+    if (buttons === 'remove') {
+        await tasksEmployee.remove()
+        res.redirect('/taskEmployee')
+    }
+
+    if (renameTaskEmployee.length === 1) {
+        !buttons === 'renameTask'
+        tasksEmployee.edit = false
+        res.redirect('/taskEmployee')
+    } else {
+        if (buttons === 'renameTask') {
+            tasksEmployee.edit = true
+            await tasksEmployee.save()
+            res.redirect('/renameTaskEmployee')
+        }
+    }
+
+    if (buttons === 'save') {
+        tasksEmployee.complited = true
         await tasksEmployee.save()
         res.redirect('/taskEmployee')
     }

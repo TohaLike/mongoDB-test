@@ -92,6 +92,11 @@ projectRouter.post('/completeTask', async (req, res) => {
     const renameTask = await Projects.find({edit: true})
     const buttons = req.body.simplebtn;
 
+    if (buttons === 'delete') {
+        await Projects.deleteMany({complited: true});   
+        res.redirect('/tasks')
+    }
+
     if (buttons === 'remove') {
         await task.remove()
         res.redirect('/tasks')
