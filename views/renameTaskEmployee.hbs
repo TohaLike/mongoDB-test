@@ -4,12 +4,12 @@
     {{#each tasks}}
         <form action="/renameTaskEmployee" method="POST">
             <div class="inputsrename">
-                <input class="wrtie-inputs" type="text" required name="employeeId" placeholder="Код сотрудника" value="{{employeeId}}">
-                <input class="wrtie-inputs" type="text" required name="tasksId" placeholder="Код задачи" value="{{tasksId}}">
-                <input class="wrtie-inputs" type="text" required name="projectId" placeholder="Код проекта" value="{{projectId}}">
-                <input class="wrtie-inputs" type="text" required name="email" placeholder="Почта" value="{{email}}">
-                <input class="wrtie-inputs" type="text" required name="taskEmployee" placeholder="Задача сотрудника" value="{{taskEmployee}}">
-                <input class="wrtie-inputs" type="text" required name="deadline" placeholder="Срок выполнения" value="{{deadline}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="employeeId" placeholder="Код сотрудника" value="{{employeeId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="tasksId" placeholder="Код задачи" value="{{tasksId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="projectId" placeholder="Код проекта" value="{{projectId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="email" placeholder="Почта" value="{{email}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="taskEmployee" placeholder="Задача сотрудника" value="{{taskEmployee}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="deadline" placeholder="Срок выполнения" value="{{deadline}}">
 
                 <label>Обновить данные задачи</label>
             </div>

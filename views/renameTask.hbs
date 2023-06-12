@@ -4,13 +4,13 @@
     {{#each projects}}
         <form action="/renameTask" method="POST">
             <div class="inputsrename">
-                <input class="wrtie-inputs" type="text" required name="nameOfProject" placeholder="Название проекта" value="{{nameOfProject}}">
-                <input class="wrtie-inputs" type="text" required name="description" placeholder="Описание" value="{{description}}">
-                <input class="wrtie-inputs" type="text" required name="dataStarted" placeholder="Дата начала" value="{{dataStarted}}">
-                <input class="wrtie-inputs" type="text" required name="dataEndend" placeholder="Дата окончания" value="{{dataEndend}}">
-                <input class="wrtie-inputs" type="text" required name="team" placeholder="Штат" value="{{team}}">
-                <input class="wrtie-inputs" type="text" required name="client" placeholder="Клиент" value="{{client}}">
-                <input class="wrtie-inputs" type="text" required name="projectId" placeholder="Код проекта" value="{{projectId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="nameOfProject" placeholder="Название проекта" value="{{nameOfProject}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="description" placeholder="Описание" value="{{description}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="dataStarted" placeholder="Дата начала" value="{{dataStarted}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="dataEndend" placeholder="Дата окончания" value="{{dataEndend}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="team" placeholder="Штат" value="{{team}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="client" placeholder="Клиент" value="{{client}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" required name="projectId" placeholder="Код проекта" value="{{projectId}}">
 
                 <label>Обновить данные проекта</label>
             </div>

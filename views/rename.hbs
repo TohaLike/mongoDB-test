@@ -4,13 +4,14 @@
     {{#each rename}}
         <form action="/rename" method="POST">
             <div class="inputsrename">
-                <input class="wrtie-inputs" type="text"  name="firstName" required placeholder="Имя" value="{{firstName}}">
-                <input class="wrtie-inputs" type="text"  name="lastName" required placeholder="Фамилия" value="{{lastName}}">
-                <input class="wrtie-inputs" type="text"  name="jobTitle" required placeholder="Должность" value="{{jobTitle}}">
-                <input class="wrtie-inputs" type="text"  name="email" required placeholder="Электронная почта" value="{{email}}">
-                <input class="wrtie-inputs" type="text"  name="mobilePhone" required placeholder="Мобильный телефон" value="{{mobilePhone}}">
-                <input class="wrtie-inputs" type="text"  name="projectId" required placeholder="Код проекта" value="{{projectId}}">
-                <input class="wrtie-inputs" type="text" required name="employeeId" placeholder="Код сотрудника" value="{{employeeId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="firstName" required placeholder="Имя" value="{{firstName}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="lastName" required placeholder="Фамилия" value="{{lastName}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="jobTitle" required placeholder="Должность" value="{{jobTitle}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="email" required placeholder="Электронная почта" value="{{email}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="mobilePhone" required placeholder="Мобильный телефон" value="{{mobilePhone}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="employeeId" required placeholder="Код сотрудника" value="{{employeeId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="projectId" required placeholder="Код проекта" value="{{projectId}}">
+                <input class="wrtie-inputs" type="text" autocomplete="off" name="taskId" required placeholder="Код задачи" value="{{taskId}}">
 
                 <label>Обновить данные сотрудника</label>
             </div>

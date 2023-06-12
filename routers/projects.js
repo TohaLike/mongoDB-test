@@ -125,6 +125,7 @@ projectRouter.post('/completeTask', async (req, res) => {
 // The renameTask page ---------------------------
 projectRouter.post('/renameTask', async (req, res) => {
     const renameTask = await Projects.find({edit: true})
+    const projectId = await Projects.findOne({projectId: req.body.projectId})
 
     await Projects.findOneAndUpdate(
         {
@@ -140,6 +141,8 @@ projectRouter.post('/renameTask', async (req, res) => {
             team: req.body.team,
             client: req.body.client
         }) 
+
+        console.log(projectId)
 
     if (renameTask.length === 1) {
         res.redirect('/tasks') 

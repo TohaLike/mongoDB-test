@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const Todo = require('../models/Todo')
+const Projects = require('../models/Projects')
 const router = Router()
 
 
@@ -48,9 +49,16 @@ router.post('/create', async (req, res) => {
         jobTitle: req.body.jobTitle,
         email: req.body.email,
         mobilePhone: req.body.mobilePhone,
+        employeeId: req.body.employeeId,
         projectId: req.body.projectId,
-        employeeId: req.body.employeeId
+        taskId: req.body.taskId
     });
+
+    const updateId = await Projects.findOne({projectId: todo.projectId})
+
+    if(updateId) {
+        await updateId.updateOne({ $inc: { team: 1 }})
+    }
 
     try { 
         await todo.save()
@@ -76,20 +84,11 @@ router.post('/complete', async (req, res) => {
     }
 
     if (buttons === 'remove') {
-        await todo.remove()
         res.redirect('/')
     }
 
-    if (rename.length === 1) {
-        !buttons === 'renmae'
-        todo.edit = false
+    if (buttons === 'rename') {
         res.redirect('/')
-    } else {
-        if (buttons === 'rename') {
-            todo.edit = true
-            await todo.save()
-            res.redirect('/rename')
-        }
     }
 
     if (buttons === 'save') {
@@ -107,8 +106,12 @@ router.post('/uncomplete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
     const rename = await Todo.find({edit: true})
     const buttons = req.body.simplebtn
-    
+    const updateId = await Projects.findOne({projectId: todo.projectId})
+
     if (buttons === 'remove') {
+        if(updateId) {
+            await updateId.updateOne({ $inc: { team: -1 }})
+        }
         await todo.remove()
         res.redirect('/')
     }
@@ -116,14 +119,14 @@ router.post('/uncomplete', async (req, res) => {
     if (rename.length === 1) {
         !buttons === 'renmae'
         res.redirect('/')
-    } else {
-        if (buttons === 'rename') {
-            todo.edit = true
-            await todo.save()
-            res.redirect('/rename')
-        }
     }
 
+    if (buttons === 'rename') {
+        todo.edit = true
+        await todo.save()
+        res.redirect('/rename')
+    }
+    
     if (buttons === 'save') {
         todo.complited = true;
         await todo.save()
@@ -136,21 +139,27 @@ router.post('/uncomplete', async (req, res) => {
 // Rename page was created to rename form -------------------------
 router.post('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true})
+    const todo = await Todo.findById(req.body.id)
+    const renameTodo = { 
+        edit: false, 
+        firstName: req.body.firstName, 
+        lastName: req.body.lastName,
+        jobTitle: req.body.jobTitle,
+        email: req.body.email,
+        mobilePhone: req.body.mobilePhone,
+        employeeId: req.body.employeeId,
+        projectId: req.body.projectId,
+        taskId: req.body.taskId
+    }
 
-    await Todo.findOneAndUpdate(
-        {
-            edit: true
-        }, 
-        {
-            edit: false, 
-            firstName: req.body.firstName, 
-            lastName: req.body.lastName,
-            jobTitle: req.body.jobTitle,
-            email: req.body.email,
-            mobilePhone: req.body.mobilePhone,
-            projectId: req.body.projectId,
-            employeeId: req.body.employeeId
-        }) 
+    const updateId = await Projects.findOne({projectId: renameTodo.projectId})
+
+    if(updateId) {
+        await updateId.updateOne({ $inc: { team: 1 }})
+    }
+    
+    await Todo.findOneAndUpdate({ edit: true }, renameTodo)
+
 
     if (rename.length === 1) {
         res.redirect('/') 

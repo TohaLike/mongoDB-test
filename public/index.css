@@ -56,7 +56,9 @@ body {
 }
 
 
-/* For main page */
+
+
+/* For main page Panel Main */
 .main__label {
     width: 100%;
     display: flex;
@@ -74,35 +76,14 @@ body {
     font-size: 35px;
 }
 
-.main__subtitle {
-    font-size: 35px;
-}
-
 .panel__title {
     font-size: 1rem;
-    width: 156px;
+    width: 145px;
 }
 
-.project__id {
+.email__title {
     position: relative;
-    left: 46px;
-    width: 88px;
-}
-
-.employee__id {
-    position: relative;
-    left: 74px;
-}
-
-.project__id__main {
-    width: 88px;
-    position: absolute;
-    left: 1159px;
-}
-
-.employee__id__main {
-    position: relative;
-    left: 158px;
+    left: -23px;
 }
 
 .mobile__phone {
@@ -110,16 +91,73 @@ body {
     left: 71px;
 }
 
-.btn__delete__all {
-    background-color: #9c1c1c;
+.employee__id {
     position: relative;
-    left: 94px;
+    left: 45px;
+}
+
+.project__id {
+    position: relative;
+    left: 30px;
+    width: 88px;
+}
+
+.task__id {
+    position: relative;
+    left: 47px;
+    width: 88px;
 }
 
 
-/* Task section */
+/* Footer */
+.main__subtitle {
+    font-size: 35px;
+}
+/* ---------------------------------------------------------------- */
+
+
+
+/* Employee */
 .todo__management {
     margin-top: 0px;
+}
+
+.main__title {
+    font-size: 1rem;
+    width: 146px;
+}
+
+.title__of__project {
+    width: 1060px;
+}
+
+.employee__id__main {
+    position: absolute;
+    left: 1103px;
+}
+
+.project__id__main {
+    width: 88px;
+    position: absolute;
+    left: 1236px;
+}
+
+.task__id__main {
+    width: 88px;
+    position: absolute;
+    left: 1341px;
+}
+
+
+.btn__delete__all {
+    background-color: #9c1c1c;
+    position: relative;
+    left: 101px;
+}
+
+
+.btn__section {
+    margin-left: 395px;
 }
 
 .btn__small {
@@ -137,29 +175,8 @@ body {
     border: none;
 }
 
-.btn__section {
-    margin-left: 154px;
-}
 
-.main__title {
-    font-size: 1rem;
-    width: 157px;
-}
-
-.title__of__project {
-    width: 1060px;
-}
-
-.complete__main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.hide-on-med-and-down li {
-    margin-right: 5px;
-}
-
+/* Employee compleate */
 .todo label {
     width: 100%;
     display: flex;
@@ -173,6 +190,16 @@ body {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
+.complete__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hide-on-med-and-down li {
+    margin-right: 5px;
+}
+
 .todo label:hover {
     width: 100%;
     background-color: #dfdfdf;
@@ -182,13 +209,15 @@ body {
 .todo i {
     z-index: 2;
 }
+/* -------------------------------------------------- */
+
+
 
 
 /* Rename page */
 .rename__btn {
     width: 93px;
     height: 32px;
-    
 }
 
 .btn__update {
