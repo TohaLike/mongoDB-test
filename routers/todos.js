@@ -85,8 +85,8 @@ router.post('/complete', async (req, res) => {
 
     if (buttons === 'remove') {
         res.redirect('/')
-    }
-
+    } 
+    
     if (buttons === 'rename') {
         res.redirect('/')
     }
@@ -119,10 +119,9 @@ router.post('/uncomplete', async (req, res) => {
     if (rename.length === 1) {
         !buttons === 'renmae'
         res.redirect('/')
-    }
-
-    if (buttons === 'rename') {
+    } else if (buttons === 'rename') {
         todo.edit = true
+        await updateId.updateOne({ $inc: {team: -1} })
         await todo.save()
         res.redirect('/rename')
     }
@@ -139,7 +138,6 @@ router.post('/uncomplete', async (req, res) => {
 // Rename page was created to rename form -------------------------
 router.post('/rename', async (req, res) => {
     const rename = await Todo.find({edit: true})
-    const todo = await Todo.findById(req.body.id)
     const renameTodo = { 
         edit: false, 
         firstName: req.body.firstName, 
@@ -152,14 +150,13 @@ router.post('/rename', async (req, res) => {
         taskId: req.body.taskId
     }
 
-    const updateId = await Projects.findOne({projectId: renameTodo.projectId})
+    const updateId = await Projects.findOne({ projectId: renameTodo.projectId })
 
-    if(updateId) {
-        await updateId.updateOne({ $inc: { team: 1 }})
+    if (updateId) {
+        await updateId.updateOne({ $inc: {team: 1} })
     }
-    
-    await Todo.findOneAndUpdate({ edit: true }, renameTodo)
 
+    await Todo.findOneAndUpdate({ edit: true }, renameTodo)
 
     if (rename.length === 1) {
         res.redirect('/') 

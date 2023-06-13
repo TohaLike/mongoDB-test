@@ -69,7 +69,7 @@ projectRouter.post('/uncompleteTask', async (req, res) => {
     if (renameTask.length === 1) {
         !buttons === 'renameTask'
         task.edit = false
-        res.redirect('/')
+        res.redirect('/tasks')
     } else {
         if (buttons === 'renameTask') {
             task.edit = true
@@ -105,7 +105,7 @@ projectRouter.post('/completeTask', async (req, res) => {
     if (renameTask.length === 1) {
         !buttons === 'renameTask'
         task.edit = false
-        res.redirect('/')
+        res.redirect('/renameTask')
     } else {
         if (buttons === 'renameTask') {
             task.edit = true
@@ -125,24 +125,18 @@ projectRouter.post('/completeTask', async (req, res) => {
 // The renameTask page ---------------------------
 projectRouter.post('/renameTask', async (req, res) => {
     const renameTask = await Projects.find({edit: true})
-    const projectId = await Projects.findOne({projectId: req.body.projectId})
+    const renmaeProject = {
+        edit: false,
+        projectId: req.body.projectId,
+        nameOfProject: req.body.nameOfProject,
+        description: req.body.description,
+        dataStarted: req.body.dataStarted,
+        dataEndend: req.body.dataEndend,
+        team: req.body.team,
+        client: req.body.client
+    } 
 
-    await Projects.findOneAndUpdate(
-        {
-            edit: true
-        }, 
-        {
-            edit: false,
-            projectId: req.body.projectId,
-            nameOfProject: req.body.nameOfProject,
-            description: req.body.description,
-            dataStarted: req.body.dataStarted,
-            dataEndend: req.body.dataEndend,
-            team: req.body.team,
-            client: req.body.client
-        }) 
-
-        console.log(projectId)
+    await Projects.findOneAndUpdate({ edit: true }, renmaeProject) 
 
     if (renameTask.length === 1) {
         res.redirect('/tasks') 
