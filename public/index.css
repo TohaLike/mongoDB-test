@@ -182,7 +182,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
     background-color: #ffffff;
     color: #000;
     padding: 1em;    
@@ -240,12 +239,17 @@ body {
 
 
 /* For tasks page */
+.projects__length {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
 .projects__li article {
     width: 1280px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
     background-color: #ffffff;
     color: #000;
     padding: 1em;    
@@ -258,7 +262,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
     background-color: #dfdfdf;
     transition: .2s ease;
     color: #000;
@@ -281,7 +284,27 @@ body {
 }
 
 .main__panel__tasks {
-    margin-top: 50px;
+    margin-top: 42px;
+}
+
+.panel__title__tasks {
+    font-size: 20px;
+    width: 300px;
+}
+
+.panel__title__tasks span {
+    font-size: 20px;
+    width: 300px;
+}
+
+.btn__add__project {
+    position: relative;
+    left: 733px;
+}
+
+.btn__delete__all__projects {
+    margin-left: 739px;
+    background-color: #9c1c1c;
 }
 
 .titles__section {
@@ -297,6 +320,8 @@ body {
     z-index: 100;
 }
 
+
+/* Task employee */
 .btn__section__tasksEmployee {
     margin-top: -141px;
     position: absolute;
@@ -310,14 +335,10 @@ body {
     align-items: center;
 }
 
-.projects__length {
-    margin: 0;
-    font-size: 20px;
-}
-
 .tasksEmployee__length {
     margin: 0;
-    font-size: 20px;
+    font-size: 35px;
+    margin-bottom: 20px;
 }
 
 .management__projects {
@@ -340,13 +361,12 @@ body {
     z-index: 2;
 }
 
-
-.btn__delete__all__projects {
-    margin-left: 1043px;
-    background-color: #9c1c1c;
+.btn__add__employee {
+    position: relative;
+    left: 733px;
 }
 
 .btn__delete__all__employee {
-    margin-left: 1058px;
+    margin-left: 739px;
     background-color: #9c1c1c;
 }

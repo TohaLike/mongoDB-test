@@ -62,7 +62,6 @@ taskRouter.post('/addTaskEmployee', async (req, res) => {
 // Uncomplete employee ---------------
 taskRouter.post('/completeTaskEmployee', async (req, res) => {
     const tasksEmployee = await Tasks.findById(req.body.id)
-    const renameTaskEmployee = await Tasks.find({edit: true})
     const buttons = req.body.simplebtn;
 
     if (buttons === 'delete') {
@@ -70,21 +69,16 @@ taskRouter.post('/completeTaskEmployee', async (req, res) => {
         res.redirect('/taskEmployee')
     }
 
+    if (buttons === 'add') {   
+        res.redirect('/addTaskEmployee')
+    }
+
     if (buttons === 'remove') {
-        await tasksEmployee.remove()
         res.redirect('/taskEmployee')
     }
 
-    if (renameTaskEmployee.length === 1) {
-        !buttons === 'renameTask'
-        tasksEmployee.edit = false
-        res.redirect('/taskEmployee')
-    } else {
-        if (buttons === 'renameTask') {
-            tasksEmployee.edit = true
-            await tasksEmployee.save()
-            res.redirect('/renameTaskEmployee')
-        }
+    if (buttons === 'renameTask') {
+        res.redirect('/renameTaskEmployee')
     }
 
     if (buttons === 'save') {
@@ -100,22 +94,25 @@ taskRouter.post('/uncompleteTaskEmployee', async (req, res) => {
     const renameTaskEmployee = await Tasks.find({edit: true})
     const buttons = req.body.simplebtn;
 
-
+    if (buttons === 'add') {   
+        res.redirect('/addTaskEmployee')    
+    }
+    
     if (buttons === 'remove') {
         await tasksEmployee.remove()
         res.redirect('/taskEmployee')
     }
 
+   
+
     if (renameTaskEmployee.length === 1) {
         !buttons === 'renameTask'
         tasksEmployee.edit = false
         res.redirect('/taskEmployee')
-    } else {
-        if (buttons === 'renameTask') {
-            tasksEmployee.edit = true
-            await tasksEmployee.save()
-            res.redirect('/renameTaskEmployee')
-        }
+    } else if (buttons === 'renameTask') {
+        tasksEmployee.edit = true
+        await tasksEmployee.save()
+        res.redirect('/renameTaskEmployee')
     }
 
     if (buttons === 'save') {
@@ -130,20 +127,17 @@ taskRouter.post('/uncompleteTaskEmployee', async (req, res) => {
 // The renameTask page ---------------------------
 taskRouter.post('/renameTaskEmployee', async (req, res) => {
     const renameTaskEmployee = await Tasks.find({edit: true})
+    const renameTask = {
+        edit: false,
+        employeeId: req.body.employeeId,
+        tasksId: req.body.tasksId,
+        projectId: req.body.projectId,
+        email: req.body.email,
+        taskEmployee: req.body.taskEmployee,
+        deadline: req.body.deadline
+    }
 
-    await Tasks.findOneAndUpdate(
-        {
-            edit: true
-        }, 
-        {
-            edit: false,
-            employeeId: req.body.employeeId,
-            tasksId: req.body.tasksId,
-            projectId: req.body.projectId,
-            email: req.body.email,
-            taskEmployee: req.body.taskEmployee,
-            deadline: req.body.deadline
-        }) 
+    await Tasks.findOneAndUpdate({ edit: true }, renameTask) 
 
     if (renameTaskEmployee.length === 1) {
         res.redirect('/taskEmployee') 

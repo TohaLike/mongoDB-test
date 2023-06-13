@@ -1,8 +1,11 @@
 <div class="main__panel__tasks">
-    <label class="main__label__tasks">
-        <h2 class="projects__length">Проекты: <span>{{projects.length}}</span></h2> 
+    <h1 class="projects__length">Проекты: <span>{{projects.length}}</span></h1> 
+
+    <div class="main__label__tasks">
+        <span class="panel__title__tasks">Добавленные проекты</span>
+        <button class="btn__add__project btn-add btn-small" form="uncomplete" name="simplebtn" type="submit" value="add">Добавить</button>
         <button class="btn__delete__all__projects btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
-    </label>
+    </div>
 </div>
 
 {{#if projects.length}}

@@ -1,8 +1,11 @@
-<div class="main__panel__tasks">
-    <label class="main__label__tasks">
-        <h2 class="tasksEmployee__length">Задачи: <span>{{tasksEmployee.length}}</span></h2> 
+<div class="main__panel__tasks">        
+    <h1 class="tasksEmployee__length">Задачи: <span>{{tasksEmployee.length}}</span></h1> 
+
+    <div class="main__label__tasks">
+        <span class="panel__title__tasks">Задачи сотрудников</span>
+        <button class="btn__add__employee btn-add btn-small" form="uncomplete" name="simplebtn" type="submit" value="add">Добавить</button>
         <button class="btn__delete__all__employee btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
-    </label>
+    </div>
 </div>
 
 {{#if tasksEmployee.length}}
@@ -46,7 +49,7 @@
             {{else}}
                 <li class="projects__li">
                     <article>     
-                        <form action="/uncompleteTaskEmployee" method="POST">
+                        <form action="/uncompleteTaskEmployee" id="uncomplete" method="POST">
                             <div class="titles__section">
                               <div class="task__main">
                                     <span class="main__title">Код сотрудника:</span>
