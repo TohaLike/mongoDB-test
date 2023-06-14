@@ -3,16 +3,8 @@
     <h1 class="employee__length">Сотрудники: <span>{{todos.length}}</span></h1> 
 
     <div class="main__label">
-        <input type="checkbox" name="complited"> 
-        <span class="panel__title">Имя</span>
-        <span class="panel__title">Фамилия</span>
-        <span class="panel__title">Должность</span>
-        <span class="panel__title email__title">Электронная почта</span>
-        <span class="panel__title mobile__phone">Телефон</span>
-        <span class="panel__title employee__id">Код сотрудника</span>
-        <span class="panel__title project__id">Код проекта</span>
-        <span class="panel__title task__id">Код задачи</span>
-
+        <span class="panel__title__tasks">Сотрудники предприятия</span>
+        <button class="btn__add__project btn-add btn-small" form="uncomplete" name="simplebtn" type="submit" value="add">Добавить</button>
         <button class="btn__delete__all btn-delete btn-small" form="complete" name="simplebtn" type="submit" value="delete">Удалить</button>
     </div>
 </div>
@@ -20,22 +12,37 @@
 
 {{#if todos.length}}
     <ul class="todo__management">
-        {{#each todos}}     
-            <li class="todo">
-                {{#if complited}}
-                    <label form="complete" name="labelbtn" value="add">
-                        <form action="/complete" class="complete__main" id="complete" method="POST">                        
-                            <input type="checkbox" checked name="complited">
-                            <span class="main__title first__name">{{firstName}}</span>
-                            <span class="main__title last__name">{{lastName}}</span>
-                            <span class="main__title job__title">{{jobTitle}}</span>
-                            <span class="main__title email__title">{{email}}</span>
-                            <span class="main__title mobile__phone">{{mobilePhone}}</span>
-                            <span class="main__title employee__id__main">{{employeeId}}</span>
-                            <span class="main__title project__id__main">{{projectId}}</span>
-                            <span class="main__title task__id__main">{{taskId}}</span>
+        {{#each todos}}  
+            {{#if complited}}   
+                <li class="projects__li__color">
+                    <article class="colorProject" form="complete" name="labelbtn" value="add">
+                        <form action="/complete" id="complete" method="POST">    
+                            <div class="titles__section">
+                                <div class="task__main">
+                                    <span class="panel__title">Имя:</span>
+                                    <span class="panel__title">Фамилия:</span>
+                                    <span class="panel__title">Должность:</span>
+                                    <span class="panel__title">Почта:</span>
+                                    <span class="panel__title">Телефон:</span>
+                                    <span class="panel__title">Код сотрудника:</span>
+                                    <span class="panel__title">Код проекта:</span>
+                                    <span class="panel__title">Код задачи:</span>
+                                </div>
+
+                                <div class="task__main">
+                                    <span class="main__title title__of__project first__name">{{firstName}}</span>
+                                    <span class="main__title title__of__project last__name">{{lastName}}</span>
+                                    <span class="main__title title__of__project job__title">{{jobTitle}}</span>
+                                    <span class="main__title title__of__project email__title">{{email}}</span>
+                                    <span class="main__title title__of__project mobile__phone">{{mobilePhone}}</span>
+                                    <span class="main__title title__of__project employee__id__main">{{employeeId}}</span>
+                                    <span class="main__title title__of__project project__id__main">{{projectId}}</span>
+                                    <span class="main__title title__of__project task__id__main">{{taskId}}</span>
+                                </div>
+                            </div>
 
                             <input type="hidden" value="{{_id}}" name="id">
+                            
 
                             <div class="btn__section">
                                 <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="save">add</button>
@@ -43,19 +50,35 @@
                                 <button class="btn__small btn__main large material-icons" name="simplebtn" type="submit" value="remove">close</button>
                             </div>
                         </form>
-                    </label>  
-                {{else}}
-                    <label>     
-                        <form action="/uncomplete" class="complete__main" method="POST">   
-                            <input type="checkbox" name="uncomplited">
-                            <span class="main__title first__name">{{firstName}}</span>
-                            <span class="main__title last__name">{{lastName}}</span>
-                            <span class="main__title job__title">{{jobTitle}}</span>
-                            <span class="main__title email__title">{{email}}</span>
-                            <span class="main__title mobile__phone">{{mobilePhone}}</span>
-                            <span class="main__title employee__id__main">{{employeeId}}</span>
-                            <span class="main__title project__id__main">{{projectId}}</span>
-                            <span class="main__title task__id__main">{{taskId}}</span>
+                    </article>  
+                </li>
+            {{else}}
+                <li class="projects__li">
+                    <article>     
+                        <form action="/uncomplete" id="uncomplete" method="POST">
+                            <div class="titles__section">
+                                <div class="task__main">
+                                    <span class="panel__title">Имя:</span>
+                                    <span class="panel__title">Фамилия:</span>
+                                    <span class="panel__title">Должность:</span>
+                                    <span class="panel__title">Почта:</span>
+                                    <span class="panel__title">Телефон:</span>
+                                    <span class="panel__title">Код сотрудника:</span>
+                                    <span class="panel__title">Код проекта:</span>
+                                    <span class="panel__title">Код задачи:</span>
+                                </div>
+
+                                <div class="task__main">
+                                    <span class="main__title title__of__project first__name">{{firstName}}</span>
+                                    <span class="main__title title__of__project last__name">{{lastName}}</span>
+                                    <span class="main__title title__of__project job__title">{{jobTitle}}</span>
+                                    <span class="main__title title__of__project email__title">{{email}}</span>
+                                    <span class="main__title title__of__project mobile__phone">{{mobilePhone}}</span>
+                                    <span class="main__title title__of__project employee__id__main">{{employeeId}}</span>
+                                    <span class="main__title title__of__project project__id__main">{{projectId}}</span>
+                                    <span class="main__title title__of__project task__id__main">{{taskId}}</span>
+                                </div>
+                            </div>
 
                             <input type="hidden" value="{{_id}}" name="id">
 
@@ -65,9 +88,9 @@
                                 <button class="btn__small large material-icons" name="simplebtn" type="submit" value="remove">close</button>
                             </div>
                         </form>
-                    </label> 
-                {{/if}}                          
-            </li>
+                    </article>                        
+                </li>
+            {{/if}}
         {{/each}}
     </ul>
     

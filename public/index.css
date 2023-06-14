@@ -74,6 +74,7 @@ body {
 
 .employee__length {
     font-size: 35px;
+    margin-bottom: 20px;
 }
 
 .panel__title {
@@ -81,32 +82,6 @@ body {
     width: 145px;
 }
 
-.email__title {
-    position: relative;
-    left: -23px;
-}
-
-.mobile__phone {
-    position: relative;
-    left: 71px;
-}
-
-.employee__id {
-    position: relative;
-    left: 45px;
-}
-
-.project__id {
-    position: relative;
-    left: 30px;
-    width: 88px;
-}
-
-.task__id {
-    position: relative;
-    left: 47px;
-    width: 88px;
-}
 
 
 /* Footer */
@@ -131,33 +106,17 @@ body {
     width: 1060px;
 }
 
-.employee__id__main {
-    position: absolute;
-    left: 1103px;
-}
-
-.project__id__main {
-    width: 88px;
-    position: absolute;
-    left: 1236px;
-}
-
-.task__id__main {
-    width: 88px;
-    position: absolute;
-    left: 1341px;
-}
-
-
 .btn__delete__all {
     background-color: #9c1c1c;
     position: relative;
-    left: 101px;
+    left: 739px;
 }
 
-
 .btn__section {
-    margin-left: 395px;
+    margin-top: -185px;
+    position: absolute;
+    left: 1455px;
+    z-index: 100;
 }
 
 .btn__small {

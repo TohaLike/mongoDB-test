@@ -75,7 +75,6 @@ router.post('/create', async (req, res) => {
 // Form finished ------------------------------
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id)
-    const rename = await Todo.find({edit: true})
     const buttons = req.body.simplebtn;
 
     if (buttons === 'delete') {
@@ -117,7 +116,7 @@ router.post('/uncomplete', async (req, res) => {
     }
 
     if (rename.length === 1) {
-        !buttons === 'renmae'
+        buttons === 'renmae'
         res.redirect('/')
     } else if (buttons === 'rename') {
         todo.edit = true
@@ -127,10 +126,11 @@ router.post('/uncomplete', async (req, res) => {
     }
     
     if (buttons === 'save') {
-        todo.complited = true;
+        todo.complited = true
         await todo.save()
         res.redirect('/')
     }
+
 })
 
 
