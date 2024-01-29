@@ -94,17 +94,15 @@ taskRouter.post('/uncompleteTaskEmployee', async (req, res) => {
     const renameTaskEmployee = await Tasks.find({edit: true})
     const buttons = req.body.simplebtn;
 
-    if (buttons === 'add') {   
-        res.redirect('/addTaskEmployee')    
-    }
-    
     if (buttons === 'remove') {
         await tasksEmployee.remove()
         res.redirect('/taskEmployee')
     }
 
-   
-
+    if (buttons === 'add') {   
+        res.redirect('/addTaskEmployee')
+    }
+    
     if (renameTaskEmployee.length === 1) {
         !buttons === 'renameTask'
         tasksEmployee.edit = false

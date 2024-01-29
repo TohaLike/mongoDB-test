@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const todoRoutes = require('./routers/todos');
 const projectRoutes = require('./routers/projects');
 const tasksRoutes = require('./routers/tasks');
+const cookieParser = require('cookie-parser');
 
 
 const path = require('path');
@@ -22,12 +23,17 @@ app.set('views', 'views');
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 app.use(todoRoutes);
 app.use(projectRoutes);
 app.use(tasksRoutes);
 
-
+app.use((req, res, next) => {
+    const currentPosition = req.query.scrollPosition || 0; // Получите текущую позицию прокрутки из параметра запроса (если используется AJAX) или установите значение по умолчанию.
+    res.cookie('scrollPosition', currentPosition, { httpOnly: true });
+    next();
+});
 
 async function start() {
     try {

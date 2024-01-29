@@ -12,12 +12,14 @@ projectRouter.get('/addTask', (req, res) => {
 });
 
 projectRouter.get('/tasks', async (req, res) => {
+    const scrollPosition = req.cookies.scrollPosition || 0; 
     const projects = await Projects.find().lean()
 
     res.render('tasks', {
         title: 'Проекты',
         isTasks: true,
         isRenameTask: true,
+        scrollPosition,
         projects
     })
 })
@@ -66,6 +68,10 @@ projectRouter.post('/uncompleteTask', async (req, res) => {
         res.redirect('/tasks')
     }
 
+    if (buttons === 'add') {   
+        res.redirect('/addTask')
+    }
+
     if (renameTask.length === 1) {
         !buttons === 'renameTask'
         task.edit = false
@@ -95,6 +101,10 @@ projectRouter.post('/completeTask', async (req, res) => {
     if (buttons === 'delete') {
         await Projects.deleteMany({complited: true});   
         res.redirect('/tasks')
+    }
+
+    if (buttons === 'add') {   
+        res.redirect('/addTask')
     }
 
     if (buttons === 'remove') {

@@ -115,6 +115,10 @@ router.post('/uncomplete', async (req, res) => {
         res.redirect('/')
     }
 
+    if (buttons === 'add') {
+        res.redirect('/create')
+    }
+
     if (rename.length === 1) {
         buttons === 'renmae'
         res.redirect('/')
